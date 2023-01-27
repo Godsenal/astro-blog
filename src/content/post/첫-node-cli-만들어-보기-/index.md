@@ -1,6 +1,6 @@
 ---
-title: '첫 node cli로 gatsby 글 쉽게 쓰기'
-date: '2019-05-17'
+title: "첫 node cli로 gatsby 글 쉽게 쓰기"
+date: "2019-05-17"
 tags:
   - gatsby
   - javascript
@@ -13,8 +13,8 @@ Gatsby로 만든 블로그의 글을 쓸 때, 마크다운 파일의 정보를 �
 
 ```yaml
 ---
-title: '첫 node cli로 gatsby 글 쉽게 쓰기'
-date: '2019-05-17'
+title: "첫 node cli로 gatsby 글 쉽게 쓰기"
+date: "2019-05-17"
 tags:
   - gatsby
   - javascript
@@ -59,7 +59,7 @@ return [Array.from(titleSet), Array.from(categorySet), Array.from(tagSet)];
 `postPath`는 post가 들어있는 path이고, readdir은 node에서 제공하는 `fs` 라이브러리의 메서드이다. callback을 넘겨주는 방식이 아닌 promise를 반환하는 방식으로 사용하기 위해서는,
 
 ```js
-const { promisify } = require('util');
+const { promisify } = require("util");
 const readdir = promisify(fs.readdir);
 ```
 
@@ -76,15 +76,15 @@ input, number, confirm, list ... 등등이 있다.
 
 ```js
 const { title } = await inquirer.prompt({
-  name: 'title',
-  message: 'What is your post title?',
+  name: "title",
+  message: "What is your post title?",
   validate: (val) => {
     return new Promise((res) => {
       if (!val || val.length < 2) {
-        return res('Title must be 0 ~ 2 length.');
+        return res("Title must be 0 ~ 2 length.");
       }
       if (titleList.some((item) => item === val)) {
-        return res('Title is already exist!');
+        return res("Title is already exist!");
       }
       return res(true);
     });
@@ -95,7 +95,7 @@ return title;
 
 `input`이 기본 타입이기 때문에 따로 타입을 지정해주지 않았다. 이런식으로 `name`을 정하면 그에 해당하는 이름으로 Promise가 걸린 값을 준다. 정말 편하게 `validate`를 할 수가 있는데, Promise를 반환하여 validate 성공시 `true`를 resolve 해주고, 아니면 문자열로 메시지를 resolve 해주면,
 
-![Title](./title.jpg)
+![Title]/assets/posts/image/title.jpg)
 
 이런식으로 validate 처리를 하여 다시 입력을 받을 수 있도록 해준다.
 
@@ -104,23 +104,23 @@ return title;
 ```js
 const createIdentity = -1;
 let result = await inquirer.prompt({
-  type: 'list',
-  name: 'categories',
-  message: 'Select categories.',
+  type: "list",
+  name: "categories",
+  message: "Select categories.",
   choices: [
-    { name: 'Create other category.', value: createIdentity },
+    { name: "Create other category.", value: createIdentity },
     ...choices,
     { name: "I don't want to have category...", value: null },
   ],
 });
 if (result.categories === createIdentity) {
   result = await inquirer.prompt({
-    name: 'categories',
-    message: 'Type new category.',
+    name: "categories",
+    message: "Type new category.",
     validate: (val) => {
       return new Promise((res) => {
         if (!val || val.length < 2) {
-          return res('Category must be 0 ~ 2 length.');
+          return res("Category must be 0 ~ 2 length.");
         }
         return res(true);
       });
@@ -134,7 +134,7 @@ return result.categories ? [result.categories] : [];
 
 그리고 이 list 프롬프트의 결과가 `-1` 이면 새 카테고리를 입력받도록 `input` 프롬프트를 생성하였다.
 
-![Category](./category.gif)
+![Category]/assets/posts/image/category.gif)
 
 이런식으로 작동한다. 왼쪽에 엑스박스는 내 터미널이 화살표 기호 지원을 안해줘서 그렇다.
 
@@ -145,18 +145,22 @@ const handleTags = async (choices, results = []) => {
   const FINISH = [{ name: `OK. DONE!`, value: null }];
   const currChoices = [...diff(choices, results)];
   const { result } = await inquirer.prompt({
-    type: 'autocomplete',
-    name: 'result',
-    message: 'Select a tag.',
+    type: "autocomplete",
+    name: "result",
+    message: "Select a tag.",
     source: (curr, input) => {
       return new Promise((res) => {
         if (!input) {
           return res(FINISH.concat(currChoices));
         }
-        const searchResult = currChoices.filter((choice) => new RegExp(`^${input}`).test(choice));
+        const searchResult = currChoices.filter((choice) =>
+          new RegExp(`^${input}`).test(choice)
+        );
         // Resolve search results or create Tag
         return res(
-          searchResult.length ? searchResult : [{ name: `create ${input} tag.`, value: input }],
+          searchResult.length
+            ? searchResult
+            : [{ name: `create ${input} tag.`, value: input }]
         );
       });
     },
@@ -177,7 +181,7 @@ const handleTags = async (choices, results = []) => {
 
 그렇지 않을 때는, 현재 input에 매치되는 태그들을 resolve 시켜줬고, 현재 매치되는 태그가 하나도 없을 경우 태그를 생성할 수 있는 선택지를 resolve 해줬다.
 
-![Tag](./tag.gif)
+![Tag]/assets/posts/image/tag.gif)
 
 요런식으로 작동한다.
 
@@ -189,9 +193,11 @@ const handleTags = async (choices, results = []) => {
 
 ```js
 const createMatters = (matters) => {
-  return matter.stringify('', matters);
+  return matter.stringify("", matters);
 };
-const matters = createMatters(omitBy({ title, date, tags, categories }, isEmpty));
+const matters = createMatters(
+  omitBy({ title, date, tags, categories }, isEmpty)
+);
 ```
 
 `lodash`의 omitBy를 이용해서 필요없는 정보는 없애주고 frontmatter를 생성하였다.
@@ -199,12 +205,12 @@ const matters = createMatters(omitBy({ title, date, tags, categories }, isEmpty)
 그리고 이를 이용해 포스트 생성하기전에 유저의 확인을 받아보도록 했다.
 
 ```js
-log(chalk.magenta('Here is your post...'));
+log(chalk.magenta("Here is your post..."));
 log(chalk.italic(matters));
 const { proceed } = await inquirer.prompt({
-  type: 'confirm',
-  name: 'proceed',
-  message: 'Do you want to proceed?',
+  type: "confirm",
+  name: "proceed",
+  message: "Do you want to proceed?",
 });
 return proceed;
 ```
@@ -217,7 +223,7 @@ return proceed;
 
 ```js
 const createPost = async (title, matters) => {
-  const titleWithBar = title.replace(/ /gi, '-');
+  const titleWithBar = title.replace(/ /gi, "-");
   const createPath = `${postPath}/${titleWithBar}.md`;
   await writeFile(createPath, matters);
   return createPath;
@@ -229,15 +235,15 @@ const createPost = async (title, matters) => {
 이 때, 마지막으로 `ora`를 사용해 이쁜 spinner를 만들어 주자.
 
 ```js
-const spinner = ora('Creating post...').start();
+const spinner = ora("Creating post...").start();
 const createdPath = await createPost(title, matters);
-spinner.succeed('Done!');
+spinner.succeed("Done!");
 log(chalk.green(`You can find created post ${chalk.blue(createdPath)}`));
 ```
 
 이렇게 `ora(message).start()`와 동시에 spinner가 터미널에 뜨고, 작업이 완료되면, `spinner.succeed()` 나 다른 메서드를 통해 멈출 수 있다. 여기서 사용한 `succeed()`는 성공했다는 메시지와 함께 체크 표시를 띄워준다.
 
-![Post](./post.gif)
+![Post]/assets/posts/image/post.gif)
 
 원하는 결과의 포스트가 지정해준 경로에 생성된 것을 확인할 수 있다.
 

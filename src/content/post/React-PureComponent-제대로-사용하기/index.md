@@ -1,6 +1,6 @@
 ---
 title: React - PureComponent 제대로 사용하기
-date: '2018-11-05'
+date: "2018-11-05"
 categories:
   - dev
 tags:
@@ -16,8 +16,8 @@ React에서 제공하는 컴포넌트 클래스는 기본 Component와 `PureComp
 그 차이를 알아보기 위해서는 먼저 react의 re-render방식을 알아볼 필요가 있다. React의 가장 기본적은 re-render 트리거는 `setState`다. setState가 일어나면 그 컴포넌트와 그 컴포넌트 아래에 있는 모든 컴포넌트의 `render()`를 호출하여 기존 엘리먼트 트리(virtual DOM)와 비교를 하고, 그 정보를 이용해 실제 돔 엘리먼트를 업데이트한다. 여기서 중요한 점은 비교한다는 점이다.
 
 ```jsx
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import ReactDOM from "react-dom";
 
 class Message extends React.Component {
   render() {
@@ -27,7 +27,7 @@ class Message extends React.Component {
 }
 class App extends React.Component {
   state = {
-    input: '',
+    input: "",
     messages: [],
   };
   handleChange = (e) => {
@@ -37,7 +37,7 @@ class App extends React.Component {
   };
   addMessage = () => {
     this.setState((state) => ({
-      input: '',
+      input: "",
       messages: [...state.messages, state.input],
     }));
   };
@@ -57,13 +57,13 @@ class App extends React.Component {
   }
 }
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
 실제 re-render가 어떻게 일어나는지 확인하기 위해 이러한 코드를 짜보자. 그리고 [react-developer-tool](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 의 Highlight Updates 옵션을 켜보자.(Message 컴포넌트의 render안에 console을 찍어봐도 된다.)
 
-![rerender](./rerender.gif)
+![rerender]/assets/posts/image/rerender.gif)
 
 input의 값이 바뀔 때, 이미 render되어 있는 다른 메시지 컴포넌트도 re-render 되는 것을 볼 수 있다. 앞에서 말했듯이, `<App>` 의 `handleChange` 메소드에서 setState가 실행되고, 이는 하위 컴포넌트인 `Message`의 re-render를 가져온다. 이는 전혀 불필요한 동작으로 성능을 감소시키는 요소가 된다.
 

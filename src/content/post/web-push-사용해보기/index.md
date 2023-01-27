@@ -1,6 +1,6 @@
 ---
 title: web push 사용해보기
-date: '2021-08-08'
+date: "2021-08-08"
 tags:
   - javascript
   - web
@@ -42,7 +42,7 @@ web push는 이 Push API를 사용하게된다.
 
 요게 어떻게 동작하지? 가 조금 이해가 안갔었는데, 리서치하다보니 요런식으로 정리가 된다.
 
-![webpush](./webpush.png)
+![webpush]/assets/posts/image/webpush.png)
 
 1. push API 를 이용해 브라우저별로 push subscription 및 [subscription 객체](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)(push 서버 endpoint 등이 포함)를 발급
 2. 해당 subscription 을 원하는 저장소에 저장
@@ -90,10 +90,10 @@ npx web-push generate-vapid-keys
 
 ```ts
 Notification.requestPermission().then((status) => {
-  console.log('Notification 상태', status);
+  console.log("Notification 상태", status);
 
-  if (status === 'denied') {
-    alert('Notification 거부됨');
+  if (status === "denied") {
+    alert("Notification 거부됨");
   }
 });
 ```
@@ -102,13 +102,13 @@ Notification.requestPermission().then((status) => {
 
 ```ts
 Notification.requestPermission().then((status) => {
-  console.log('Notification 상태', status);
+  console.log("Notification 상태", status);
 
-  if (status === 'denied') {
-    alert('Notification 거부됨');
+  if (status === "denied") {
+    alert("Notification 거부됨");
   } else if (navigator.serviceWorker) {
     navigator.serviceWorker
-      .register('/serviceworker.js') // serviceworker 등록
+      .register("/serviceworker.js") // serviceworker 등록
       .then(function (registration) {
         const subscribeOptions = {
           userVisibleOnly: true,
@@ -137,48 +137,50 @@ Notification.requestPermission().then((status) => {
 먼저 Subscription 정보를 저장하는 처리를 해보면 (간단하게 그냥 배열에다 저장해두었다)
 
 ```ts
-import { PushSubscription } from 'web-push';
+import { PushSubscription } from "web-push";
 
 // nodejs 서버
 const tokenList: PushSubscription[] = [];
 
-app.post('/register', function (req, res) {
+app.post("/register", function (req, res) {
   tokenList.push(req.body.subscription);
 
-  res.send('success');
+  res.send("success");
 });
 ```
 
 그리고, 원할 때 알림을 보낼 수 있도록 했다. (예시는 `/notify` 로 원하는 메시지를 쿼리로 포함해 get 요청을 보내면 알림을 보내도록 했다)
 
 ```ts
-import { sendNotification, setVapidDetails } from 'web-push';
+import { sendNotification, setVapidDetails } from "web-push";
 
-app.get('/notify', async (req, res) => {
+app.get("/notify", async (req, res) => {
   const options = {
     TTL: 24 * 60 * 60,
     vapidDetails: {
-      subject: 'http://localhost:3000', // 서버 주소
+      subject: "http://localhost:3000", // 서버 주소
       publicKey: VAPID_PUBLIC_KEY,
       privateKey: VAPID_PRIVATE_KEY,
     },
   };
 
   const payload = JSON.stringify({
-    title: 'Web Notification',
-    body: '웹 알림입니다.',
-    icon: 'http://localhost:3000/icon.png',
-    tag: 'default tag',
+    title: "Web Notification",
+    body: "웹 알림입니다.",
+    icon: "http://localhost:3000/icon.png",
+    tag: "default tag",
     ...req.query,
   });
 
   try {
-    await Promise.all(tokenList.map((t) => sendNotification(t, payload, options)));
+    await Promise.all(
+      tokenList.map((t) => sendNotification(t, payload, options))
+    );
   } catch (e) {
     console.error(e);
   }
 
-  res.status('success');
+  res.status("success");
 });
 ```
 
@@ -191,28 +193,30 @@ app.get('/notify', async (req, res) => {
 먼저 push 이벤트 처리이다. 여기서는 간단하게 메시지, icon 처리정도만 해주었다.
 
 ```ts
-self.addEventListener('push', (event) => {
+self.addEventListener("push", (event) => {
   // event는 서버에서 payload로 보내준 데이터이다.
   let { title, body, icon, tag } = JSON.parse(event.data && event.data.text());
 
   // 이외에도 여러 옵션이 있다.
   // 참고: https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorkerRegistration/showNotification
-  event.waitUntil(self.registration.showNotification(title || '', { body, tag, icon }));
+  event.waitUntil(
+    self.registration.showNotification(title || "", { body, tag, icon })
+  );
 });
 ```
 
 다음은 알림 클릭시 작업이다.
 
 ```ts
-self.addEventListener('notificationclick', function (event) {
+self.addEventListener("notificationclick", function (event) {
   event.notification.close();
 
-  const urlToOpen = 'http://localhost:1234';
+  const urlToOpen = "http://localhost:1234";
 
   event.waitUntil(
     self.clients
       .matchAll({
-        type: 'window',
+        type: "window",
         includeUncontrolled: true,
         // 현재 서비스워커 클라이언트와 동일한 origin의 클라이언트를 포함시킬지 여부.
         // 요걸 활성화해두지 않으면, 현재 열린 탭이 있더라도 서비스워커를 활성화시킨 탭이 아니면 client에 포함되지 않음
@@ -220,10 +224,12 @@ self.addEventListener('notificationclick', function (event) {
       .then(function (clientList) {
         if (clientList.length > 0) {
           // 이미 열려있는 탭이 있는 경우
-          return clientList[0].focus().then((client) => client.navigate(urlToOpen));
+          return clientList[0]
+            .focus()
+            .then((client) => client.navigate(urlToOpen));
         }
         return self.clients.openWindow(urlToOpen);
-      }),
+      })
   );
 });
 ```

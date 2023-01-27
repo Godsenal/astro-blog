@@ -1,6 +1,6 @@
 ---
 title: 함수형 컴포넌트와 클래스 컴포넌트
-date: '2019-03-04'
+date: "2019-03-04"
 categories:
   - dev
 tags:
@@ -35,7 +35,7 @@ class Button extends React.Component {
 
 이런식으로 된다. 과연 똑같이 동작할까? **그렇지 않다!**
 
-![Button](./Button.gif)
+![Button]/assets/posts/image/Button.gif)
 
 이 버튼에게 `user`라는 props를 내려주는 컴포넌트를 생각해보자. 만약 버튼을 누른 후 3초가 되기전에 `user`를 바꿔주면 어떻게 될까? state가 바뀜에 따라 두 개의 버튼 컴포넌트는 리랜더링을 하게된다. 이 때, 두 컴포넌트간의 차이가 발생한다.
 
