@@ -1,5 +1,11 @@
 const Header = () => {
-  return <h1>Header</h1>;
+  return (
+    <nav>
+      <a href="/blog">blog</a>
+      <a href="/categories">categories</a>
+      <a href="/tags">tags</a>
+    </nav>
+  );
 };
 
 export default Header;

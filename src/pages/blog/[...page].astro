@@ -2,7 +2,7 @@
 import { getSortedPost } from "@utils/post";
 import type { GetStaticPathsOptions, Page } from "astro";
 import { CollectionEntry, getCollection } from "astro:content";
-import PageLayout from "../layouts/PageLayout.astro";
+import PageLayout from "@/layouts/PageLayout.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postEntries = getSortedPost(await getCollection("post"));

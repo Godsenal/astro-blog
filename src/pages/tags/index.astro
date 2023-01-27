@@ -1,0 +1,22 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { getAllTagsWithCount } from "@utils/post";
+import { getCollection } from "astro:content";
+
+const tags = getAllTagsWithCount(await getCollection("post"));
+---
+
+<PageLayout>
+  <div>
+    <h1>Tags</h1>
+    <ul>
+      {
+        tags.map(([tagName, count]) => (
+          <li>
+            <a href={`/tags/${tagName}`}>{tagName}</a> ({count})
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</PageLayout>

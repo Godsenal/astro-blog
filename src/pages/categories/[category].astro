@@ -1,0 +1,46 @@
+---
+import PageLayout from "@layouts/PageLayout.astro";
+import { getAllCategoriesWithCount, getSortedPost } from "@utils/post";
+import type { InferStaticPathsProps, UnWrap } from "@utils/type";
+import { getCollection } from "astro:content";
+
+export const getStaticPaths = async () => {
+  const posts = getSortedPost(await getCollection("post"));
+  const categories = getAllCategoriesWithCount(posts);
+
+  return categories.map(([categoryName, count]) => ({
+    params: {
+      category: categoryName,
+    },
+    props: {
+      posts: posts
+        .filter((post) => post.data.categories?.includes(categoryName))
+        .map((post) => ({
+          title: post.data.title,
+          date: post.data.date,
+          slug: post.slug,
+        })),
+      categoryCount: count,
+    },
+  }));
+};
+
+type Props = InferStaticPathsProps<typeof getStaticPaths>;
+
+const { category } = Astro.params;
+const { posts, categoryCount } = Astro.props;
+---
+
+<PageLayout>
+  <h1>category: {category}</h1>
+  <p>Posts: {categoryCount}</p>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/posts/${post.slug}`}>{post.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</PageLayout>
