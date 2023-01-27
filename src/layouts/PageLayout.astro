@@ -1,5 +1,5 @@
 ---
-import Header from "../../components/Header";
+import Header from "@/components/Header";
 
 type Props = {
   title?: string;
@@ -12,7 +12,7 @@ const { title } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
+    <title>{title || "Godsenal"}</title>
   </head>
   <body>
     <Header />

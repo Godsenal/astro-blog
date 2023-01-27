@@ -1,0 +1,51 @@
+---
+import { getSortedPost } from "@utils/post";
+import type { GetStaticPathsOptions, Page } from "astro";
+import { CollectionEntry, getCollection } from "astro:content";
+import PageLayout from "../layouts/PageLayout.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const postEntries = getSortedPost(await getCollection("post"));
+
+  return paginate(postEntries, { pageSize: 10 });
+}
+
+type Props = {
+  page: Page<CollectionEntry<"post">>;
+};
+
+const { page } = Astro.props;
+---
+
+<PageLayout>
+  <main>
+    <ul>
+      {
+        page.data.map((postEntry) => (
+          <li>
+            <a href={`/posts/${postEntry.slug}`}>{postEntry.data.title}</a>
+            <time datetime={postEntry.data.date}>{postEntry.data.date}</time>
+          </li>
+        ))
+      }
+    </ul>
+    <nav>
+      <ul>
+        {
+          page.currentPage !== 1 && (
+            <li>
+              <a href={page.url.prev}>Previous</a>
+            </li>
+          )
+        }
+        {
+          page.currentPage !== page.lastPage && (
+            <li>
+              <a href={page.url.next}>Next</a>
+            </li>
+          )
+        }
+      </ul>
+    </nav>
+  </main>
+</PageLayout>
