@@ -2,22 +2,16 @@
 import { getSortedPost } from "@utils/post";
 import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
+import PostList from "@components/PostList.astro";
 
 const postEntries = getSortedPost(await getCollection("post")).slice(0, 5);
 ---
 
 <PageLayout>
   <main>
-    <ul>
-      {
-        postEntries.map((postEntry) => (
-          <li>
-            <a href={`/posts/${postEntry.slug}`}>{postEntry.data.title}</a>
-            <time datetime={postEntry.data.date}>{postEntry.data.date}</time>
-          </li>
-        ))
-      }
-    </ul>
-    <a href={`/blog`}>모든 글 보기</a>
+    <PostList posts={postEntries} />
+    <div class="mt-10 flex justify-center">
+      <a class="link link-primary" href={`/blog`}>모든 글 보기</a>
+    </div>
   </main>
 </PageLayout>

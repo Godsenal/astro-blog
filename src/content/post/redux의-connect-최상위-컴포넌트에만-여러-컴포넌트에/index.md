@@ -1,11 +1,11 @@
 ---
 title: Redux의 connect. 최상위 컴포넌트에만? 여러 컴포넌트에?
-date: '2018-02-03'
+date: "2018-02-03"
 categories:
   - development
 tags:
   - redux
-banner: ./redux.png
+banner: /assets/posts/image/redux.png
 ---
 
 **react에서 redux**를 사용하면서 궁금했던 것들이 많았다. 혼자 공부하다 보니 어떻게 써야할지 모르겠는 것들이 많았는데, 그 중에 하나가 `connect`를 얼마나 자주, 어느 컴포넌트에 사용해야 하는지이다.

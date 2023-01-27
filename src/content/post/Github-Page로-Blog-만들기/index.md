@@ -7,7 +7,7 @@ tags:
   - github
   - blog
   - jekyll
-banner: ./githubpage.jpg
+banner: /assets/posts/image/githubpage.jpg
 ---
 
 기존에 서버 호스팅해서 블로그를 사용하다가 블로그는 편한게 최고다라는 생각에 **Github page**를 이용한 blog로 넘어오게 되었다.

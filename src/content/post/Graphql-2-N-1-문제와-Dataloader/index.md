@@ -1,11 +1,11 @@
 ---
 title: Graphql 2 - N+1 문제와 Dataloader
-date: '2018-10-22'
+date: "2018-10-22"
 categories:
   - dev
 tags:
   - graphql
-banner: ./graphql.png
+banner: /assets/posts/image/graphql.png
 ---
 
 Graphql에는 REST에서는 나타나지 않는 몇 가지 문제가 있다. 그 중에 하나가 **N+1문제**이다. 이 글에서는 N+1문제와 이를 해결할 수 있는 `Dataloader` 에 대해서 알아본다.

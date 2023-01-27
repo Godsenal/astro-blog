@@ -1,11 +1,11 @@
 ---
 title: Graphql 1 - REST의 대안 GraphQL
-date: '2018-10-22'
+date: "2018-10-22"
 categories:
   - dev
 tags:
   - graphql
-banner: ./graphql.png
+banner: /assets/posts/image/graphql.png
 ---
 
 어느땐가 부터 GraphQL이라는 이름을 여러번 듣게 되었다. REST의 효율적인 대안이될 수 있다는데 당시에는 이미 REST로 간단한 프로젝트를 진행 중이여서 관심을 가지지 못했는데, 이번에 기회가 되어 혼자 열심히 공부해보게 되었다. 스키마를 만드는 것 부터 너무 많은 방법들이 있어서 간단히 정리해보려고 한다. 처음 react를 배울때 같았다. 지금 까지 배운 내용들을 간단히 정리해보려고 한다.

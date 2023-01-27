@@ -12,8 +12,8 @@ const Header = () => {
   return (
     <nav class="navbar bg-base-100 max-w-screen-md mx-auto">
       <div class="flex-1">
-        <a href="/" class="btn btn-ghost normal-case text-xl">
-          Godsenal
+        <a href="/" class="btn btn-ghost normal-case text-2xl">
+          GODSENAL
         </a>
       </div>
       <div class="flex-none">

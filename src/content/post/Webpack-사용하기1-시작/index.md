@@ -1,11 +1,11 @@
 ---
 title: Webpack 사용하기 1 - 시작
-date: '2018-03-25'
+date: "2018-03-25"
 categories:
   - dev
 tags:
   - webpack
-banner: ./webpack-logo.png
+banner: /assets/posts/image/webpack-logo.png
 ---
 
 > 이 글은 Webpack 3 을 기준으로 쓰여졌습니다.

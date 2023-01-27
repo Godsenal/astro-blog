@@ -1,12 +1,12 @@
 ---
 title: Amazon Web Services(AWS)에서 외부 도메인 연결
-date: '2018-03-19'
+date: "2018-03-19"
 categories:
   - aws
 tags:
   - aws
   - server
-banner: ./aws.png
+banner: /assets/posts/image/aws.png
 ---
 
 이번에 서버 호스팅을 처음으로 [AWS(Amazon Web services)](https://aws.amazon.com/ko/)에서 해봤다.ec2를 1년 무료로 사용할 수 있기 때문에 한 번 사용해보았는데, 이번 글은 그 중에서 외부도메인을 연결한 과정이다.

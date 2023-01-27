@@ -3,6 +3,7 @@ import { getSortedPost } from "@utils/post";
 import type { GetStaticPathsOptions, Page } from "astro";
 import { CollectionEntry, getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
+import PostList from "@components/PostList.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postEntries = getSortedPost(await getCollection("post"));
@@ -19,33 +20,24 @@ const { page } = Astro.props;
 
 <PageLayout>
   <main>
-    <ul>
-      {
-        page.data.map((postEntry) => (
-          <li>
-            <a href={`/posts/${postEntry.slug}`}>{postEntry.data.title}</a>
-            <time datetime={postEntry.data.date}>{postEntry.data.date}</time>
-          </li>
-        ))
-      }
-    </ul>
-    <nav>
-      <ul>
+    <PostList posts={page.data} />
+    <nav class="mt-10 flex justify-center">
+      <div class="btn-group grid grid-cols-2">
         {
           page.currentPage !== 1 && (
-            <li>
-              <a href={page.url.prev}>Previous</a>
-            </li>
+            <a class="btn btn-outline" href={page.url.prev}>
+              이전 글
+            </a>
           )
         }
         {
           page.currentPage !== page.lastPage && (
-            <li>
-              <a href={page.url.next}>Next</a>
-            </li>
+            <a class="btn btn-outline" href={page.url.next}>
+              다음 글
+            </a>
           )
         }
-      </ul>
+      </div>
     </nav>
   </main>
 </PageLayout>
