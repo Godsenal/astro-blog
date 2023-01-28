@@ -25,3 +25,15 @@ export const getAllTagsWithCount = (posts: CollectionEntry<"post">[]) => {
 export const getAllCategoriesWithCount = (posts: CollectionEntry<"post">[]) => {
   return getSortedCountList(posts.map((v) => v.data.categories || []).flat());
 };
+
+export const getPostsWithMatters = (posts: CollectionEntry<"post">[]) => {
+  return Promise.all(
+    posts.map(async (v) => ({
+      ...v,
+      frontMatter: (await v.render()).remarkPluginFrontmatter as Record<
+        string,
+        any
+      > & { minutesRead: number; excerpt: string },
+    }))
+  );
+};

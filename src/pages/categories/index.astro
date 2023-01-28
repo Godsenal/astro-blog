@@ -8,12 +8,20 @@ const categories = getAllCategoriesWithCount(await getCollection("post"));
 
 <PageLayout>
   <div>
-    <h1>Categories</h1>
-    <ul>
+    <h1 class="title">Categories</h1>
+    <ul class="flex flex-col gap-2 text-center mt-10">
       {
         categories.map(([categoryName, count]) => (
-          <li>
-            <a href={`/categories/${categoryName}`}>{categoryName}</a> ({count})
+          <li class="mt-4 first:mt-0">
+            <h2>
+              <a
+                href={`/categories/${categoryName}`}
+                class="text-3xl text-primary font-bold"
+              >
+                {categoryName}
+              </a>
+            </h2>
+            <div class="mt-2">{count}개의 글</div>
           </li>
         ))
       }

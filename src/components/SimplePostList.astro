@@ -1,0 +1,20 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+type Props = { posts: CollectionEntry<"post">[] };
+
+const { posts } = Astro.props;
+---
+
+<ul class="mt-5">
+  {
+    posts.map((post) => (
+      <li class="mt-2 font-bold flex justify-between gap-10">
+        <a class="link" href={`/posts/${post.slug}`}>
+          {post.data.title}
+        </a>
+        <span class="shrink-0">{post.data.date}</span>
+      </li>
+    ))
+  }
+</ul>

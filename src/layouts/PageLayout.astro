@@ -1,5 +1,6 @@
 ---
 import Header from "@/components/Header";
+import "@/styles/base.css";
 
 type Props = {
   title?: string;
@@ -15,10 +16,12 @@ const { title } = Astro.props;
     <title>{title || "Godsenal"}</title>
   </head>
   <body>
-    <Header client:visible />
-    <article class="max-w-screen-md px-5 py-10 mx-auto">
-      <slot />
-    </article>
+    <div class="max-w-screen-md sm:mx-auto mx-5">
+      <Header client:visible />
+      <article class="py-10">
+        <slot />
+      </article>
+    </div>
   </body>
 </html>
 

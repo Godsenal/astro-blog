@@ -13,3 +13,13 @@
 [data-theme="dark"] .dark-inline-block {
   display: inline-block;
 }
+
+@layer components {
+  .title {
+    @apply text-2xl bg-primary text-primary-content inline-block p-3 py-2 font-bold rounded-md;
+  }
+
+  .tag {
+    @apply mx-0 border-b-2 border-dashed;
+  }
+}

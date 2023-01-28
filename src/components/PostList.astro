@@ -1,31 +1,47 @@
 ---
+import TagList from "@components/TagList.astro";
+import { getPostsWithMatters } from "@utils/post";
 import type { CollectionEntry } from "astro:content";
 
 type Props = { posts: CollectionEntry<"post">[] };
 
 const { posts } = Astro.props;
+
+const postWithMatter = await getPostsWithMatters(posts);
 ---
 
-<div class="flex flex-col gap-5">
+<div class="flex flex-col gap-10">
   {
-    posts.map(post => (
-    <a href={`/posts/${post.slug}`}>
-      <div class="card w-full bg-base-200">
-        {
-          post.data.banner && (
-            <figure>
-              <img class="w-full max-h-60 object-cover" src={post.data.banner} alt={post.data.title} />
-            </figure>
-          )
-        }
-        <div class="card-body">
-          <h2 class="card-title">{post.data.title}</h2>
-          <!-- TODO: excerpt -->
-          <p>Empty</p>
+    postWithMatter.map((post) => (
+      <div>
+        <div class="mb-2">
+          <span class="text-sm text-primary font-bold">{post.data.date}</span>
+          {post.data.tags && (
+            <div class="inline-block">
+              <span class="mx-1">|</span>
+              <TagList tags={post.data.tags || []} />
+            </div>
+          )}
         </div>
+        <a href={`/posts/${post.slug}`}>
+          <div class="card w-full bg-base-100">
+            {post.data.banner && (
+              <figure>
+                <img
+                  class="w-full max-h-60 object-cover"
+                  src={post.data.banner}
+                  alt={post.data.title}
+                />
+              </figure>
+            )}
+            <div class="card-body px-0 py-0">
+              <h2 class="card-title">{post.data.title}</h2>
+              TODO: https://github.com/withastro/astro/pull/5995
+              {post.frontMatter?.excerpt && <p>{post.frontMatter.excerpt}</p>}
+            </div>
+          </div>
+        </a>
       </div>
-    </a>
     ))
   }
 </div>
-

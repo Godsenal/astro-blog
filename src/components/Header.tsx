@@ -13,9 +13,12 @@ const Header = () => {
   };
 
   return (
-    <nav class="navbar bg-base-100 max-w-screen-md mx-auto">
+    <nav class="navbar bg-base-100 max-w-screen-md mx-auto px-0">
       <div class="flex-1">
-        <a href="/" class="btn btn-ghost normal-case text-2xl">
+        <a
+          href="/"
+          class="btn btn-ghost normal-case text-2xl px-0 animate-none"
+        >
           GODSENAL
         </a>
       </div>
