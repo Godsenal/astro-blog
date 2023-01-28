@@ -6,10 +6,10 @@
   display: none;
 }
 
-[data-theme="halloween"] .dark-hidden {
+[data-theme="dark"] .dark-hidden {
   display: none;
 }
 
-[data-theme="halloween"] .dark-inline-block {
+[data-theme="dark"] .dark-inline-block {
   display: inline-block;
 }
