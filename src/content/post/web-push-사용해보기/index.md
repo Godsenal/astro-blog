@@ -42,7 +42,7 @@ web push는 이 Push API를 사용하게된다.
 
 요게 어떻게 동작하지? 가 조금 이해가 안갔었는데, 리서치하다보니 요런식으로 정리가 된다.
 
-![webpush]/assets/posts/image/webpush.png)
+![webpush](/assets/posts/image/webpush.png)
 
 1. push API 를 이용해 브라우저별로 push subscription 및 [subscription 객체](https://developer.mozilla.org/en-US/docs/Web/API/PushSubscription)(push 서버 endpoint 등이 포함)를 발급
 2. 해당 subscription 을 원하는 저장소에 저장

@@ -95,7 +95,7 @@ return title;
 
 `input`이 기본 타입이기 때문에 따로 타입을 지정해주지 않았다. 이런식으로 `name`을 정하면 그에 해당하는 이름으로 Promise가 걸린 값을 준다. 정말 편하게 `validate`를 할 수가 있는데, Promise를 반환하여 validate 성공시 `true`를 resolve 해주고, 아니면 문자열로 메시지를 resolve 해주면,
 
-![Title]/assets/posts/image/title.jpg)
+![Title](/assets/posts/image/title.jpg)
 
 이런식으로 validate 처리를 하여 다시 입력을 받을 수 있도록 해준다.
 
@@ -134,7 +134,7 @@ return result.categories ? [result.categories] : [];
 
 그리고 이 list 프롬프트의 결과가 `-1` 이면 새 카테고리를 입력받도록 `input` 프롬프트를 생성하였다.
 
-![Category]/assets/posts/image/category.gif)
+![Category](/assets/posts/image/category.gif)
 
 이런식으로 작동한다. 왼쪽에 엑스박스는 내 터미널이 화살표 기호 지원을 안해줘서 그렇다.
 
@@ -181,7 +181,7 @@ const handleTags = async (choices, results = []) => {
 
 그렇지 않을 때는, 현재 input에 매치되는 태그들을 resolve 시켜줬고, 현재 매치되는 태그가 하나도 없을 경우 태그를 생성할 수 있는 선택지를 resolve 해줬다.
 
-![Tag]/assets/posts/image/tag.gif)
+![Tag](/assets/posts/image/tag.gif)
 
 요런식으로 작동한다.
 
@@ -243,7 +243,7 @@ log(chalk.green(`You can find created post ${chalk.blue(createdPath)}`));
 
 이렇게 `ora(message).start()`와 동시에 spinner가 터미널에 뜨고, 작업이 완료되면, `spinner.succeed()` 나 다른 메서드를 통해 멈출 수 있다. 여기서 사용한 `succeed()`는 성공했다는 메시지와 함께 체크 표시를 띄워준다.
 
-![Post]/assets/posts/image/post.gif)
+![Post](/assets/posts/image/post.gif)
 
 원하는 결과의 포스트가 지정해준 경로에 생성된 것을 확인할 수 있다.
 

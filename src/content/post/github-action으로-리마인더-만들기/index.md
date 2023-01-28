@@ -158,7 +158,7 @@ jobs:
 
 `secrets` 은 github action에 넣어줄 수 있는 값으로 위와 같이 환경 변수들을 넣어줄 때 용이하다. 해당 값은 레포지토리 설정에서 추가해줄 수 있다.
 
-![Secret]/assets/posts/image/github_secret.jpg)
+![Secret](/assets/posts/image/github_secret.jpg)
 
 나는 슬랙 API에 이용할 `SLACK_AUTH_TOKEN`를 넣어준 상태이다.
 `GITHUB_TOKEN` 같은 경우는 github에서 액션에서 사용할 수 있도록 [제공해준다](https://help.github.com/en/actions/configuring-and-managing-workflows/authenticating-with-the-github_token). 이외에도 기본적인 [환경 변수](https://help.github.com/en/actions/configuring-and-managing-workflows/using-environment-variables)들이 존재하므로 필요한 것들이 있다면 써보자. 커스텀 secret에는 `GITHUB_` prefix를 사용할 수 없음에 유의하자.
@@ -198,6 +198,6 @@ jobs:
 
 wsl2를 사용하고 있다면, 윈도우용 도커 데스크탑 최신 버전을 설치하고 설정에 들어가보면 다음과 같은 옵션이 있다.
 
-![wsl-docker]/assets/posts/image/wsl-docker.jpg)
+![wsl-docker](/assets/posts/image/wsl-docker.jpg)
 
 요거 키고 wsl2 재시작하면 끝! 바로 docker 사용 가능이다.

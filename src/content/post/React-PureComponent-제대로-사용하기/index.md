@@ -63,7 +63,7 @@ ReactDOM.render(<App />, rootElement);
 
 실제 re-render가 어떻게 일어나는지 확인하기 위해 이러한 코드를 짜보자. 그리고 [react-developer-tool](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi) 의 Highlight Updates 옵션을 켜보자.(Message 컴포넌트의 render안에 console을 찍어봐도 된다.)
 
-![rerender]/assets/posts/image/rerender.gif)
+![rerender](/assets/posts/image/rerender.gif)
 
 input의 값이 바뀔 때, 이미 render되어 있는 다른 메시지 컴포넌트도 re-render 되는 것을 볼 수 있다. 앞에서 말했듯이, `<App>` 의 `handleChange` 메소드에서 setState가 실행되고, 이는 하위 컴포넌트인 `Message`의 re-render를 가져온다. 이는 전혀 불필요한 동작으로 성능을 감소시키는 요소가 된다.
 

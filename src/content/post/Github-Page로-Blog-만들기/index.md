@@ -135,7 +135,7 @@ Gemfile      _config.yml  about.md
 
 이 글 작성시간 기준 제일 앞에 있는 `Prologue`라는 테마를 적용시켜보자. 아마 대부분의 테마가 같은 방식으로 적용될 것이다.
 
-![jekyll theme]/assets/posts/image/jekyll-prologue.png)
+![jekyll theme](/assets/posts/image/jekyll-prologue.png)
 
 테마를 적용하려면 먼저 다운받아야 하는데 1. git clone을 이용해 github에 저장되어 있는 테마를 받는 방법 2. 그냥 압축파일로 다운받는 방법이 있다.
 

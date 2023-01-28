@@ -6,7 +6,7 @@ type Props = {
 const { tags } = Astro.props;
 ---
 
-<div class="inline-flex gap-2 flex-wrap">
+<div class="inline-flex gap-2 flex-wrap justify-end">
   {
     tags.map((tag, i) => (
       <a class="mx-0 tag" href={`/tags/${tag}`}>

@@ -1,21 +1,103 @@
 ---
 import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
+import TagList from "@components/TagList.astro";
+import Toc from "@components/Toc";
+import type { InferStaticPathsProps } from "@utils/type";
+import { getSortedPost } from "@utils/post";
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection("post");
+  const blogEntries = getSortedPost(await getCollection("post"));
 
-  return blogEntries.map((entry) => ({
+  return blogEntries.map((entry, i) => ({
     params: { slug: entry.slug },
-    props: { entry },
+    props: {
+      entry,
+      prevPost: blogEntries[i - 1],
+      nextPost: blogEntries[i + 1],
+    },
   }));
 }
 
-const { entry } = Astro.props;
-const { Content } = await entry.render();
+type Props = InferStaticPathsProps<typeof getStaticPaths>;
+
+const { entry, prevPost, nextPost } = Astro.props;
+
+const { Content, headings } = await entry.render();
 ---
 
+<script is:inline src="/balance-text.js"></script>
+<script is:inline>
+  window.balanceText();
+</script>
+
 <PageLayout title={entry.data.title}>
-  <h1>{entry.data.title}</h1>
-  <Content />
+  <div class="mt-10">
+    <h1 class="balance-text text-4xl font-bold mx-auto">
+      {entry.data.title}
+    </h1>
+    <div class="flex justify-end font-bold">
+      <div class="mt-5 flex flex-col gap-2 text-right">
+        <TagList tags={entry.data.tags || []} />
+        <span class="text-sm text-primary">{entry.data.date}</span>
+      </div>
+    </div>
+  </div>
+  <div class="relative mt-10">
+    <Toc client:load headings={headings} />
+    <div class="prose prose-storn max-w-full prose-a:link-secondary">
+      <Content />
+    </div>
+  </div>
+  <nav
+    class="mt-10 flex justify-center gap-2 flex-wrap sm:flex-nowrap sm:justify-between"
+  >
+    {
+      prevPost && (
+        <div class="flex-1">
+          <a class="btn btn-outline w-full" href={`/posts/${prevPost.slug}`}>
+            <span class="line-clamp-2">
+              {"<<"} {prevPost.data.title}
+            </span>
+          </a>
+        </div>
+      )
+    }
+    {
+      nextPost && (
+        <div class="flex-1">
+          <a class="btn btn-outline w-full" href={`/posts/${nextPost.slug}`}>
+            <span class="line-clamp-2">
+              {nextPost.data.title} {">>"}
+            </span>
+          </a>
+        </div>
+      )
+    }
+  </nav>
 </PageLayout>
+
+<style is:global>
+  :not(pre) > code {
+    border-radius: 0 !important;
+    border: 1px solid hsl(var(--bc)) !important;
+    background: hsl(var(--b3)) !important;
+    color: hsl(var(--bc)) !important;
+  }
+
+  /* 
+    https://stackoverflow.com/questions/10732690/offsetting-an-html-anchor-to-adjust-for-fixed-header
+    anchor 이동시 header가 가리지 않도록 하는 hack
+  */
+  .prose h1::before,
+  h2::before,
+  h3::before,
+  h4::before,
+  h5::before,
+  h6::before {
+    content: "";
+    display: block;
+    height: 80px;
+    margin-top: -80px;
+  }
+</style>

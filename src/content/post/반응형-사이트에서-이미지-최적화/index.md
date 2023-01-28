@@ -124,7 +124,7 @@ srcset을 사용할 수 없는 상황이라면 애초에 retina를 기준으로 
 예를들어 이미지 랜더링되는 크기가 항상 같도록 width가 설정되어있으면 next는 `next.config.js`에 있는 imageSizes와 deviceSizes 를 조합하여 srcset을 해상도별로 설정한다.
 아래는 이미지의 width를 명시적으로 300px로 넣어주었을 때 next가 변환한 값이다.
 
-![next의 srcset]/assets/posts/image/capture.png)
+![next의 srcset](/assets/posts/image/capture.png)
 
 config의 기본값을 사용해 384px, 640px이 해상도별로 srcset이 설정되어있음을 볼 수 있다. 따라서 1x 해상도에서는 384px, 2x 해상도에서는 640px 의 이미지가 적용될 것이다.
 
