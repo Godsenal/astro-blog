@@ -12,19 +12,15 @@ const Toc = ({ headings }: Props) => {
   const [activeHeading, setActiveHeading] = createSignal<string>();
 
   onMount(() => {
-    document.addEventListener("scroll", () => {
-      const $headings = headings
+    const $headings = [
+      ...headings
         .map((heading) => document.querySelector(`#${heading.slug}`))
-        .filter((v): v is Element => !!v);
-      const headingOffsets = Array.from($headings)
-        .map(($heading) => ({
-          offset: $heading.getBoundingClientRect().top,
-          id: $heading.id,
-        }))
-        .sort((a, b) => a.offset - b.offset);
+        .filter((v): v is HTMLHeadingElement => !!v),
+    ];
 
-      const activeIdx = headingOffsets.findIndex(
-        (heading) => heading.offset > GAP
+    document.addEventListener("scroll", () => {
+      const activeIdx = $headings.findIndex(
+        ($heading) => $heading.getBoundingClientRect().top > GAP
       );
 
       if (activeIdx === 0) {
@@ -33,9 +29,9 @@ const Toc = ({ headings }: Props) => {
       }
 
       if (activeIdx > 0) {
-        setActiveHeading(headingOffsets[activeIdx - 1]?.id);
+        setActiveHeading($headings[activeIdx - 1]?.id);
       } else {
-        setActiveHeading(headingOffsets.slice(-1)[0]?.id);
+        setActiveHeading($headings.slice(-1)[0]?.id);
       }
     });
   });
