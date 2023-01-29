@@ -1,10 +1,6 @@
 ---
 import Header from "@/components/Header";
 import "@/styles/base.css";
-import "@fontsource/exo";
-import "@fontsource/exo/700.css";
-import "@fontsource/noto-sans-kr";
-import "@fontsource/noto-sans-kr/700.css";
 
 type Props = {
   title?: string;
@@ -47,6 +43,12 @@ const {
     {title && <meta name="twitter:title" content={title} />}
     {description && <meta name="twitter:description" content={description} />}
     {image && <meta name="twitter:image" content={image} />}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <Header client:visible />
