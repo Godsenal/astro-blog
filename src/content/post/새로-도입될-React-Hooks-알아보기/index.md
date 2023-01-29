@@ -1,6 +1,6 @@
 ---
 title: 새로 도입될 React Hooks 알아보기
-date: '2018-11-05'
+date: "2018-11-05"
 categories:
   - dev
 tags:
@@ -37,7 +37,7 @@ custom Hooks는 직접 만드는 Hooks로, 잠시 후 사용해 볼 것이다. �
 
 `useState`는 함수형 컴포넌트 안에서 state를 사용할 수 있게 해주는 것이다.
 
-```js:title=Counter.js
+```js:Counter.js
 import React, { useState } from 'react';
 
 function Counter() {
@@ -79,7 +79,7 @@ useState의 반환 값도 배열로서, state와 state를 변경할 수 있는 �
 
 그럼 `mousemove` 이벤트 리스너를 등록하여 현재 마우스 포지션을 보여주는 함수형 컴포넌트를 만들어보자!
 
-```js:title=MouseWatcher.js
+```js:MouseWatcher.js
 import React, { useState, useEffect } from 'react';
 
 const MouseWatcher = () => {
@@ -119,7 +119,7 @@ useEffect는 인자로 함수를 받고, 그 함수를 매 render 후에 실행�
 
 하지만, 고쳐야할 점이 하나있다. 아까 말했듯이 effect는 **매 랜더 후에 실행되고 이 코드는 매 랜더마다 이벤트 리스너를 등록해주게 된다.** 다행히 useEffect에는 두 번째 인자를 줄 수있다.
 
-```js:title=MouseWatcher.js
+```js:MouseWatcher.js
 // ...
 useEffect(() => {
   window.addEventListener('mousemove', handleMouseMove);
@@ -138,7 +138,7 @@ useEffect의 두 번째 인자로 배열을 넘겨주면 배열안에 있는 값
 
 간단하게, 현재 앱의 테마를 저장하고 변경할 수 있는 코드를 짜보자.
 
-```js:title=themeContext.js
+```js:themeContext.js
 import { createContext } from 'react';
 
 const themeContext = createContext({
@@ -151,7 +151,7 @@ export default themeContext;
 
 `App`컴포넌트는 현재 테마 state 와 테마 state를 바꿀 수 있는 함수를 context의 값으로 넘겨준다.
 
-```js:title=App.js
+```js:App.js
 import React, { useState } from 'react';
 import themeContext from './themeContext';
 
@@ -182,7 +182,7 @@ export default App;
 
 그리고 `ThemeChanger` 컴포넌트에서는 `useContext`를 이용하여 themeContext의 값을 받는다.
 
-```js:title=ThemeChanger.js
+```js:ThemeChanger.js
 import React, { createContext, useContext } from 'react';
 import themeContext from './themeContext';
 const ThemeChanger = () => {
@@ -208,7 +208,7 @@ export default ThemeChanger;
 
 아주 재밌는 기능이 나온 것 같다. useState 의 state를 변경하는 함수로 state를 관리하는 대신에 reducer를 통해 state를 관리할 수 있도록 하는 useReducer 이다. Redux를 써봤다면 친숙하게 사용할 수 있다. 아까 useState를 사용할 때 만들었던 `Counter` 컴포넌트에서 useReducer를 사용하여 상태를 관리해보자.
 
-```js:title=useReducer.js
+```js:useReducer.js
 import React, { useReducer } from 'react';
 
 const initialState = { count: 0 };
@@ -249,7 +249,7 @@ useCallback은 성능과 밀접한 hook이다. 인라인 콜백과 배열을 인
 
 이는 **함수형 컴포넌트가 단순히 매 랜더시마다 새로 호출되는 함수이기 때문에** 생겼다고 볼 수 있다.
 
-```js:title=PassCallback.js
+```js:PassCallback.js
 import React, { useState } from 'react';
 const passCallback = () => {
   const [count, setCount] = useState(0);
@@ -262,7 +262,7 @@ const passCallback = () => {
 
 이럴 때 useCallback을 유용하게 사용할 수 있다.
 
-```js:title=passCallback.js
+```js:passCallback.js
 const memoizedCallback = useCallback(() => {
   console.log(`count: ${count}`);
 }, [count]);
@@ -290,7 +290,7 @@ const memoizedValue = useMemo(() => getFactorial(value), [value]);
 
 하지만, hooks을 사용하면 이런 stateful한 로직을 따로 빼서 원하는 컴포넌트안에서 쉽게 재사용할 수 있다. 아까 만들었던 `MouseWatcher` 컴포넌트의 현재 마우스 포지션을 구하는 로직을 재사용 가능하도록 custom hook으로 빼보자.
 
-```js:title=useMousePos.js
+```js:useMousePos.js
 import { useState, useEffect } from 'react';
 
 const useMousePos = () => {
@@ -310,7 +310,7 @@ export default useMousePos;
 
 mousemove 이벤트리스너를 등록하고, 마우스 포지션 state를 변경해주고, 이벤트리스너를 해제하는 로직을 따로 빼주었다. 이제 우리는 원하는 컴포넌트에서 이 로직을 재사용할 수 있다.
 
-```js:title=MouseChecker.js
+```js:MouseChecker.js
 import React from 'react';
 import useMousePos from './useMousePos';
 

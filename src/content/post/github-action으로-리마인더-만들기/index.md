@@ -32,7 +32,7 @@ Github Action을 생성하는 방법으로는 yml 파일을 생성해서 `.githu
 
 요것을 yml파일로 생성하면 다음과 같다.
 
-```yml
+```yaml
 name: Reminder
 
 on:
@@ -132,7 +132,7 @@ const { owner, repo } = GITHUB_DATA;
 
 다른 것은 부가적인 것이고 아마 도움이 될만한 것은 `process.env` 에 값을 집어넣는 방법일 것이다. Slack API와 Github API를 이용하기 위한 auth 토큰을 env로 넣어주었는데, 개발환경에서는 `.env` 파일을 만들어서 넣어주었지만 이를 레포지토리에 올리지 않고 워크플로우 실행시 넣어주기 위해서는 yml 파일에 다음과 같이 추가할 수 있다.
 
-```yml
+```yaml
 name: Reminder
 
 on:
@@ -175,7 +175,7 @@ jobs:
 
 > 실행시킬 때 RUNNER_TEMP... 와 같은 에러가 난다면 setup-node 액션 옵션을 다음과 같이 설정해보자.
 
-```yml
+```yaml
 jobs:
   build:
     runs-on: ubuntu-latest

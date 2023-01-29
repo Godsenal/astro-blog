@@ -46,7 +46,7 @@ const { Content, headings } = await entry.render();
   <div class="relative mt-10">
     <Toc client:load headings={headings} />
     <div
-      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative"
+      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative prose-pre:m-0 prose-pre:rounded-t-none"
     >
       <Content />
     </div>
@@ -129,5 +129,13 @@ const { Content, headings } = await entry.render();
     background-repeat: no-repeat;
 
     transform: translate(-120%, -50%);
+  }
+
+  .remark-code-title {
+    background: hsl(var(--b3));
+    color: hsl(var(--bc));
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    font-weight: bold;
   }
 </style>
