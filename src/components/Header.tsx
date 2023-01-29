@@ -1,5 +1,6 @@
 import { createSignal, onMount } from "solid-js";
 import MoreMenu from "@components/MoreMenu";
+import { FiSearch } from "solid-icons/fi";
 
 export const Menus = ["blog", "categories", "tags"];
 
@@ -52,6 +53,11 @@ const Header = () => {
                 </li>
               ))}
             </div>
+            <li id="docsearch-search-button">
+              <a>
+                <FiSearch />
+              </a>
+            </li>
             <li>
               <label
                 ref={themeSwitch}

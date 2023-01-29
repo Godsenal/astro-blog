@@ -1,6 +1,8 @@
 ---
 import Header from "@/components/Header";
+import { Algolia } from "@constants/config";
 import "@/styles/base.css";
+import DocSearch from "@components/DocSearch";
 
 type Props = {
   title?: string;
@@ -49,9 +51,20 @@ const {
       href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@docsearch/css@3"
+    />
+    <link
+      rel="preconnect"
+      href={`https://${Algolia.appId}-dsn.algolia.net`}
+      crossorigin
+    />
   </head>
+
   <body>
     <Header client:visible />
+    <DocSearch client:only="react" />
     <div class="max-w-screen-sm sm:mx-auto mx-5">
       <article class="py-5">
         <slot />

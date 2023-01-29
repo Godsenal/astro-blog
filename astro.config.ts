@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import solid from "@astrojs/solid-js";
+import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
 // @ts-ignore
@@ -29,6 +30,7 @@ export default defineConfig({
     },
   },
   integrations: [
+    react(),
     solid(),
     prefetch(),
     tailwind({ config: { applyBaseStyles: false } }),
