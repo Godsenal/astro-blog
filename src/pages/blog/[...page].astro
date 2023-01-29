@@ -7,7 +7,7 @@ import PostList from "@components/PostList.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const postEntries = getSortedPost(await getCollection("post"));
-  return paginate(postEntries, { pageSize: 10 });
+  return paginate(postEntries, { pageSize: 20 });
 }
 
 type Props = {
