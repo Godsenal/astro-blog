@@ -1,4 +1,7 @@
 import { createSignal, onMount } from "solid-js";
+import MoreMenu from "@components/MoreMenu";
+
+export const Menus = ["blog", "categories", "tags"];
 
 const Header = () => {
   const [scrolled, setScrolled] = createSignal(false);
@@ -23,11 +26,11 @@ const Header = () => {
 
   return (
     <nav
-      class=" z-50 sticky top-0 backdrop-blur-sm"
+      class="z-50 sticky top-0 backdrop-blur-md"
       style={{
         background: "hsla(var(--b3), 0.5)",
         ...(scrolled() && {
-          "box-shadow": "inset 0 -1px 0 0 hsla(0,0%,100%,.1)",
+          "box-shadow": "var(--header-border-bottom)",
         }),
       }}
     >
@@ -42,15 +45,13 @@ const Header = () => {
         </div>
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
-            <li>
-              <a href="/blog">blog</a>
-            </li>
-            <li>
-              <a href="/categories">categories</a>
-            </li>
-            <li>
-              <a href="/tags">tags</a>
-            </li>
+            <div class="hidden menu sm:menu-horizontal">
+              {Menus.map((menu) => (
+                <li>
+                  <a href={`/${menu}`}>{menu.toLocaleUpperCase()}</a>
+                </li>
+              ))}
+            </div>
             <li>
               <label
                 ref={themeSwitch}
@@ -58,7 +59,7 @@ const Header = () => {
                 onClick={handleToggleClick}
               >
                 <svg
-                  width={24}
+                  width={18}
                   class="swap-on fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -70,7 +71,7 @@ const Header = () => {
                   ></path>
                 </svg>
                 <svg
-                  width={24}
+                  width={18}
                   class="swap-off fill-current"
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -82,6 +83,9 @@ const Header = () => {
                 </svg>
               </label>
             </li>
+            <div class="sm:hidden">
+              <MoreMenu />
+            </div>
           </ul>
         </div>
       </div>

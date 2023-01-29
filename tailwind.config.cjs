@@ -11,6 +11,7 @@ module.exports = {
         light: {
           ...require("daisyui/src/colors/themes")["[data-theme=light]"],
           primary: "#444494",
+          "--header-border-bottom": "inset 0 -1px 0 0 rgba(0,0,0,.1)",
         },
       },
       {
@@ -26,6 +27,7 @@ module.exports = {
           error: "#F87272",
           // "base-content": "#cbd4d9",
           "primary-content": "#222831",
+          "--header-border-bottom": "inset 0 -1px 0 0 hsla(0,0%,100%,.1)",
         },
       },
     ],
