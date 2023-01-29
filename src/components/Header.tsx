@@ -2,7 +2,7 @@ import { createSignal, onMount } from "solid-js";
 import MoreMenu from "@components/MoreMenu";
 import { FiSearch } from "solid-icons/fi";
 
-export const Menus = ["blog", "categories", "tags"];
+export const Menus = ["blog", "categories", "tags", "about"];
 
 const Header = () => {
   const [scrolled, setScrolled] = createSignal(false);

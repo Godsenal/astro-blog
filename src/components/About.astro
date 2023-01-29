@@ -1,0 +1,35 @@
+---
+import Avatar from "@components/Avatar.astro";
+import { Icon } from "astro-icon";
+import classNames from "classnames";
+
+type Props = {
+  align?: "center" | "start" | "end";
+};
+
+const { align = "center" }: Props = Astro.props;
+const textAlign =
+  align === "end" ? "right" : align === "start" ? "left" : align;
+---
+
+<div
+  class={classNames(
+    "flex flex-col gap-4",
+    `items-${align}`,
+    `text-${textAlign}`
+  )}
+>
+  <Avatar />
+  <div class="text-lg">
+    안녕하세요. Godsenal 입니다.<br />열심히 공부하고 개발하며 얻는 것들을 이
+    사이트에 정리하고 있습니다.
+  </div>
+  <div class="flex gap-2">
+    <a class="link" href="https://www.linkedin.com/in/taehee-lee-106b83116">
+      <Icon name="mdi:linkedin" size="2x" />
+    </a>
+    <a class="link" href="https://github.com/godsenal">
+      <Icon name="mdi:github" size="2x" />
+    </a>
+  </div>
+</div>

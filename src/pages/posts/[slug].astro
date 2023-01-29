@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
 import TagList from "@components/TagList.astro";
 import Toc from "@components/Toc";
+import About from "@components/About.astro";
 import Disqus from "@components/Disqus.astro";
 import type { InferStaticPathsProps } from "@utils/type";
 import { getSortedPost } from "@utils/post";
@@ -78,7 +79,12 @@ const { Content, headings } = await entry.render();
       )
     }
   </nav>
-  <Disqus />
+  <div class="mt-10 p-4 bg-base-200 rounded-lg">
+    <About align="end" />
+  </div>
+  <div class="mt-10">
+    <Disqus />
+  </div>
 </PageLayout>
 
 <style is:global>

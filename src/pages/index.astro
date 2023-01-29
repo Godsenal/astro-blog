@@ -3,12 +3,16 @@ import { getSortedPost } from "@utils/post";
 import { getCollection } from "astro:content";
 import PageLayout from "@/layouts/PageLayout.astro";
 import PostList from "@components/PostList.astro";
+import Hero from "@components/Hero.astro";
 
 const postEntries = getSortedPost(await getCollection("post")).slice(0, 5);
 ---
 
 <PageLayout>
   <main>
+    <div class="pb-10">
+      <Hero />
+    </div>
     <PostList posts={postEntries} />
     <div class="mt-10 flex justify-center">
       <a class="btn btn-outline" href={`/blog`}>모든 글 보기</a>
