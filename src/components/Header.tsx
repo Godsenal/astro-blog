@@ -55,7 +55,7 @@ const Header = () => {
             <li>
               <label
                 ref={themeSwitch}
-                class="theme-switch btn btn-ghost swap swap-rotate"
+                class="theme-switch h-full btn btn-ghost btn-xs swap swap-rotate"
                 onClick={handleToggleClick}
               >
                 <svg

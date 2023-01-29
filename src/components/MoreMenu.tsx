@@ -31,7 +31,7 @@ const MoreMenu = () => {
         />
       </Show>
       <li class="dropdown dropdown-end z-50">
-        <label class="btn btn-ghost swap swap-rotate">
+        <label class="btn btn-ghost h-full btn-xs swap swap-rotate">
           <input type="checkbox" checked={isOpen()} onChange={handleToggle} />
           <svg
             class="swap-off fill-current"
