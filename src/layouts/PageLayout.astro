@@ -4,16 +4,45 @@ import "@/styles/base.css";
 
 type Props = {
   title?: string;
+  keywords?: string;
+  description?: string;
+  url?: string;
 };
 
-const { title } = Astro.props;
+const {
+  title = "Godsenal",
+  keywords,
+  description = `Godsenal's blog`,
+  url,
+  article,
+  image,
+} = Astro.props;
 ---
 
-<html>
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title || "Godsenal"}</title>
+    {
+      [32, 48, 64, 72, 96, 128, 144, 152, 192, 384, 512].map((size) => (
+        <link
+          rel="icon"
+          type="image/png"
+          sizes={`${size}x${size}`}
+          href={`/favicon-${size}x${size}.png`}
+        />
+      ))
+    }
+    {keywords && <meta name="keywords" content={keywords} />}
+    {url && <meta property="og:url" content={url} />}
+    {(article ? true : null) && <meta property="og:type" content="article" />}
+    {title && <meta property="og:title" content={title} />}
+    {description && <meta property="og:description" content={description} />}
+    {image && <meta property="og:image" content={image} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    {title && <meta name="twitter:title" content={title} />}
+    {description && <meta name="twitter:description" content={description} />}
+    {image && <meta name="twitter:image" content={image} />}
   </head>
   <body>
     <Header client:visible />

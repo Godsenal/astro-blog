@@ -74,6 +74,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/prefetch@npm:^0.1.1":
+  version: 0.1.1
+  resolution: "@astrojs/prefetch@npm:0.1.1"
+  dependencies:
+    throttles: ^1.0.1
+  checksum: 788b4e8cf33d0381aaba9ab18fdf2f2aa4dce8c6bef05640201b5d6635b22ab6ac5f396ea307ddba7a62c8f2ee967bf8bc7ec3ea50d6f7aa4f9ffda7070974fa
+  languageName: node
+  linkType: hard
+
 "@astrojs/prism@npm:^2.0.0":
   version: 2.0.0
   resolution: "@astrojs/prism@npm:2.0.0"
@@ -586,6 +595,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@example/framework-solid@workspace:."
   dependencies:
+    "@astrojs/prefetch": ^0.1.1
     "@astrojs/solid-js": ^2.0.0
     "@astrojs/tailwind": ^3.0.0
     "@tailwindcss/line-clamp": ^0.4.2
@@ -4775,6 +4785,13 @@ __metadata:
     mkdirp: ^1.0.3
     yallist: ^4.0.0
   checksum: 8a278bed123aa9f53549b256a36b719e317c8b96fe86a63406f3c62887f78267cea9b22dc6f7007009738509800d4a4dccc444abd71d762287c90f35b002eb1c
+  languageName: node
+  linkType: hard
+
+"throttles@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "throttles@npm:1.0.1"
+  checksum: 0f3b36b8fcba720df7ab283f40f4e4d6b1b31939dba7fafac6e4e8bc1743eeaff546916a66344be7af1d7a2d014d799e7924009a15118887aef0cfc5292559a1
   languageName: node
   linkType: hard
 
