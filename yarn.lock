@@ -598,6 +598,8 @@ __metadata:
     "@astrojs/prefetch": ^0.1.1
     "@astrojs/solid-js": ^2.0.0
     "@astrojs/tailwind": ^3.0.0
+    "@fontsource/exo": ^4.5.11
+    "@fontsource/noto-sans-kr": ^4.5.12
     "@tailwindcss/line-clamp": ^0.4.2
     "@tailwindcss/typography": ^0.5.9
     "@types/body-scroll-lock": ^3.1.0
@@ -613,6 +615,20 @@ __metadata:
     tailwindcss: ^3.0.24
   languageName: unknown
   linkType: soft
+
+"@fontsource/exo@npm:^4.5.11":
+  version: 4.5.11
+  resolution: "@fontsource/exo@npm:4.5.11"
+  checksum: 1a05fdbf5759f423ca29da9cc80da43e1e219efc1c3a6f958732915f8e2fc7a5df97cd0d4fa3c17c2b775a438e5dc2eecfd258bee9834a61be1510b9a52488b2
+  languageName: node
+  linkType: hard
+
+"@fontsource/noto-sans-kr@npm:^4.5.12":
+  version: 4.5.12
+  resolution: "@fontsource/noto-sans-kr@npm:4.5.12"
+  checksum: 45839892a66c5a5c0d797c286e88ac4dd8833e4d1bb1a8f22b988cdf10bd1369ea96eb2e1ebfbec8fc290ed3b06304147ccbfc092e82fb7b61c4695e03d05aba
+  languageName: node
+  linkType: hard
 
 "@gar/promisify@npm:^1.1.3":
   version: 1.1.3

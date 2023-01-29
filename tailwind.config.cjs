@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,astro}"],
   plugins: [
@@ -5,6 +7,13 @@ module.exports = {
     require("@tailwindcss/typography"),
     require("daisyui"),
   ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ["Exo", "Noto Sans KR", ...defaultTheme.fontFamily.sans],
+      },
+    },
+  },
   daisyui: {
     themes: [
       {
