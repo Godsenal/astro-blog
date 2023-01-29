@@ -8,15 +8,15 @@ type Props = {
 };
 
 const { align = "center" }: Props = Astro.props;
-const textAlign =
-  align === "end" ? "right" : align === "start" ? "left" : align;
 ---
 
 <div
   class={classNames(
     "flex flex-col gap-4",
-    `items-${align}`,
-    `text-${textAlign}`
+    // template string으로 하면 compile 시 사라짐
+    align === "center" && ["text-center", "items-center"],
+    align === "end" && ["text-right", "items-end"],
+    align === "start" && ["text-left", "items-start"]
   )}
 >
   <Avatar />
