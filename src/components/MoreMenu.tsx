@@ -1,5 +1,6 @@
 import { Menus } from "@components/Header";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import classNames from "classnames";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 
 const MoreMenu = () => {
@@ -30,10 +31,12 @@ const MoreMenu = () => {
           class="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75"
         />
       </Show>
-      <li class="dropdown dropdown-end z-50">
+      <li class="relative z-50">
         <label
-          tabIndex={0}
-          class="btn btn-ghost h-full btn-xs swap swap-rotate"
+          class={classNames(
+            "btn btn-ghost h-full btn-xs swap swap-rotate",
+            isOpen() && "text-neutral-content"
+          )}
         >
           <input type="checkbox" checked={isOpen()} onChange={handleToggle} />
           <svg
@@ -59,12 +62,11 @@ const MoreMenu = () => {
         <Show when={isOpen()}>
           <ul
             ref={setRef}
-            class="dropdown-content menu block p-2 shadow-lg bg-base-100 rounded-box w-52"
-            tabIndex={0}
+            class="absolute top-10 right-0 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
             {Menus.map((menu) => (
               <li>
-                <a class="w-full" href={`/${menu}`}>
+                <a class="w-full text-lg" href={`/${menu}`}>
                   {menu.toLocaleUpperCase()}
                 </a>
               </li>
