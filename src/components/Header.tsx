@@ -54,8 +54,8 @@ const Header = () => {
               ))}
             </div>
             <li id="docsearch-search-button">
-              <button class="btn btn-ghost btn-xs">
-                <FiSearch />
+              <button class="btn btn-ghost btn-xs h-full">
+                <FiSearch size={18} />
               </button>
             </li>
             <li>
