@@ -31,7 +31,10 @@ const MoreMenu = () => {
         />
       </Show>
       <li class="dropdown dropdown-end z-50">
-        <label class="btn btn-ghost h-full btn-xs swap swap-rotate">
+        <label
+          tabIndex={0}
+          class="btn btn-ghost h-full btn-xs swap swap-rotate"
+        >
           <input type="checkbox" checked={isOpen()} onChange={handleToggle} />
           <svg
             class="swap-off fill-current"
@@ -57,6 +60,7 @@ const MoreMenu = () => {
           <ul
             ref={setRef}
             class="dropdown-content menu block p-2 shadow-lg bg-base-100 rounded-box w-52"
+            tabIndex={0}
           >
             {Menus.map((menu) => (
               <li>
