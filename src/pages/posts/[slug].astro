@@ -45,7 +45,9 @@ const { Content, headings } = await entry.render();
   </div>
   <div class="relative mt-10">
     <Toc client:load headings={headings} />
-    <div class="prose prose-storn max-w-full prose-a:link-secondary">
+    <div
+      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative"
+    >
       <Content />
     </div>
   </div>
@@ -79,8 +81,7 @@ const { Content, headings } = await entry.render();
 
 <style is:global>
   :not(pre) > code {
-    border-radius: 0 !important;
-    border: 1px solid hsl(var(--bc)) !important;
+    border-radius: 0.35rem !important;
     background: hsl(var(--b3)) !important;
     color: hsl(var(--bc)) !important;
   }
@@ -99,5 +100,34 @@ const { Content, headings } = await entry.render();
     display: block;
     height: 80px;
     margin-top: -80px;
+  }
+
+  a.heading-link {
+    position: absolute;
+    top: 80px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  a.heading-link:hover > .icon.icon-link {
+    display: block;
+  }
+
+  .icon.icon-link {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+
+    aspect-ratio: 1/1;
+
+    background: url("/icons/link.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    transform: translate(-120%, -50%);
   }
 </style>

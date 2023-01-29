@@ -10,7 +10,7 @@ const { tags } = Astro.props;
   {
     tags.map((tag, i) => (
       <a class="mx-0 tag" href={`/tags/${tag}`}>
-        {`${tag}${(tags || []).length - 1 !== i ? "," : ""}`}
+        {tag}
       </a>
     ))
   }

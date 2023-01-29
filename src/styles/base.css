@@ -16,10 +16,10 @@
 
 @layer components {
   .title {
-    @apply text-2xl bg-primary text-primary-content inline-block p-3 py-2 font-bold rounded-md;
+    @apply text-2xl font-bold rounded-md text-primary;
   }
 
   .tag {
-    @apply mx-0 border-b-2 border-dashed;
+    @apply mx-0 text-sm font-bold border-b-2 border-dashed;
   }
 }
