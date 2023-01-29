@@ -20,6 +20,6 @@
   }
 
   .tag {
-    @apply mx-0 text-sm font-bold border-b-2 border-dashed;
+    @apply mx-0 font-bold border-b-2 border-dashed;
   }
 }

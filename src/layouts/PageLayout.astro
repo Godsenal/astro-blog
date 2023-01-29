@@ -35,6 +35,8 @@ const {
         />
       ))
     }
+    <title>{title}</title>
+    <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     {url && <meta property="og:url" content={url} />}
     {(article ? true : null) && <meta property="og:type" content="article" />}
