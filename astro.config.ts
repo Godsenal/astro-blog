@@ -8,7 +8,9 @@ import codeTitlePlugin from "remark-code-titles";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { customPlugin } from "./customRemarkPlugin";
+import sitemap from "@astrojs/sitemap";
 
+// https://astro.build/config
 export default defineConfig({
   markdown: {
     remarkPlugins: [codeTitlePlugin, customPlugin],
@@ -29,10 +31,16 @@ export default defineConfig({
       wrap: true,
     },
   },
+  site: "https://godsenal.com",
   integrations: [
     react(),
     solid(),
     prefetch(),
-    tailwind({ config: { applyBaseStyles: false } }),
+    sitemap(),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
   ],
 });
