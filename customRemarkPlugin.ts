@@ -9,7 +9,11 @@ export const customPlugin: RemarkPlugin = () => {
   return async (tree, { data }) => {
     const plain = toString(tree);
     const readingTime = getReadingTime(plain);
-    const excerpt = plain.split(EXCERPT_SEPARATOR)[0]?.slice(0, PRUNE_LENGTH);
+    const splittedText = plain.split(EXCERPT_SEPARATOR)[0] || "";
+    const excerpt =
+      splittedText.length > PRUNE_LENGTH
+        ? `${splittedText.slice(0, PRUNE_LENGTH)}...`
+        : splittedText;
 
     const astroData = data.astro as MarkdownAstroData;
 

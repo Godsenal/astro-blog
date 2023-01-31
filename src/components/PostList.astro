@@ -41,9 +41,7 @@ const postWithMatter = await getPostsWithMatters(posts);
             )}
             <div class="card-body p-0">
               <h2 class="card-title">{post.data.title}</h2>
-              {post.frontMatter?.excerpt && (
-                <p class="line-clamp-3">{post.frontMatter.excerpt}</p>
-              )}
+              {post.frontMatter?.excerpt && <p>{post.frontMatter.excerpt}</p>}
             </div>
           </div>
         </a>
