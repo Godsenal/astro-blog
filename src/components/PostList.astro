@@ -14,30 +14,36 @@ const postWithMatter = await getPostsWithMatters(posts);
   {
     postWithMatter.map((post) => (
       <div>
-        <div class="mb-2">
+        <div class="mb-2 flex items-center gap-2">
           <span class="text-sm text-primary font-bold">{post.data.date}</span>
+
+          <span>|</span>
           {post.data.tags && (
             <div class="inline-block">
-              <span class="mx-1">|</span>
               <TagList tags={post.data.tags || []} />
             </div>
           )}
+          <span>|</span>
+          <span class="text-sm text-secondary font-bold">
+            {Math.floor(post.frontMatter.minutesRead)}분
+          </span>
         </div>
         <a href={`/posts/${post.slug}`}>
           <div class="card w-full bg-base-100">
             {post.data.banner && (
               <figure>
                 <img
-                  class="w-full max-h-60 object-cover"
+                  class="w-full max-h-60 object-cover mb-2"
                   src={post.data.banner}
                   alt={post.data.title}
                 />
               </figure>
             )}
-            <div class="card-body px-0 py-0">
+            <div class="card-body p-0">
               <h2 class="card-title">{post.data.title}</h2>
-              TODO: https://github.com/withastro/astro/pull/5995
-              {post.frontMatter?.excerpt && <p>{post.frontMatter.excerpt}</p>}
+              {post.frontMatter?.excerpt && (
+                <p class="line-clamp-3">{post.frontMatter.excerpt}</p>
+              )}
             </div>
           </div>
         </a>
