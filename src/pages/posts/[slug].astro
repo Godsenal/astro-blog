@@ -33,7 +33,11 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
   window.balanceText();
 </script>
 
-<PageLayout title={entry.data.title}>
+<PageLayout
+  title={entry.data.title}
+  description={remarkPluginFrontmatter.excerpt}
+  keywords={(entry.data.tags || []).join(",")}
+>
   <div class="sm:mt-10">
     <h1 class="balance-text text-4xl font-bold mx-auto">
       {entry.data.title}
