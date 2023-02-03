@@ -1,5 +1,5 @@
 export const Algolia = {
-  appId: "8UXVACQHJS",
-  indexName: "blog",
-  apiKey: "e3c0bf05f5a395ab93671a1979db538a",
+  appId: "KL5XEVXGC5",
+  apiKey: "dc57b85b93d59781dab5da66b8021941",
+  indexName: "godsenal",
 };
