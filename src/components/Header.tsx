@@ -1,6 +1,6 @@
 import { createSignal, onMount } from "solid-js";
 import MoreMenu from "@components/MoreMenu";
-import { FiSearch } from "solid-icons/fi";
+import { IoSearchOutline } from "solid-icons/io";
 
 export const Menus = ["blog", "categories", "tags", "about"];
 
@@ -55,7 +55,7 @@ const Header = () => {
             </div>
             <li id="docsearch-search-button">
               <button class="btn btn-ghost btn-xs h-full">
-                <FiSearch size={18} />
+                <IoSearchOutline size={18} />
               </button>
             </li>
             <li>
