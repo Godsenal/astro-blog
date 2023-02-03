@@ -58,7 +58,7 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
   <div class="relative mt-10">
     <Toc client:load headings={headings} />
     <div
-      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative prose-pre:m-0"
+      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative prose-pre:m-0 break-words"
     >
       <Content />
     </div>
