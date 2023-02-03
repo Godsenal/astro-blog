@@ -24,9 +24,11 @@ type Props = InferStaticPathsProps<typeof getStaticPaths>;
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+
+const PageTitle = `Tag: ${tag}`;
 ---
 
-<PageLayout>
-  <h1 class="title">Tag: {tag}</h1>
+<PageLayout title={PageTitle}>
+  <h1 class="title">PageTitle</h1>
   <SimplePostList posts={posts} />
 </PageLayout>

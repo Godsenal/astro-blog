@@ -11,8 +11,10 @@ type Props = {
   url?: string;
 };
 
+const SiteName = "Godsenal";
+
 const {
-  title = "Godsenal",
+  title = "",
   keywords,
   description = `Godsenal's blog`,
   url,
@@ -35,7 +37,7 @@ const {
         />
       ))
     }
-    <title>{title}</title>
+    <title>{[title, SiteName].filter(Boolean).join(" | ")}</title>
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     {url && <meta property="og:url" content={url} />}

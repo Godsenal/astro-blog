@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const categories = getAllCategoriesWithCount(await getCollection("post"));
 ---
 
-<PageLayout>
+<PageLayout title="Categories">
   <div>
     <h1 class="title">Categories</h1>
     <ul class="flex flex-col gap-2 text-center mt-10">

@@ -25,10 +25,12 @@ export const getStaticPaths = async () => {
 type Props = InferStaticPathsProps<typeof getStaticPaths>;
 
 const { category } = Astro.params;
-const { posts, categoryCount } = Astro.props;
+const { posts } = Astro.props;
+
+const PageTitle = `Category: ${category}`;
 ---
 
-<PageLayout>
-  <h1 class="title">Category: {category}</h1>
+<PageLayout title={PageTitle}>
+  <h1 class="title">{PageTitle}</h1>
   <SimplePostList posts={posts} />
 </PageLayout>
