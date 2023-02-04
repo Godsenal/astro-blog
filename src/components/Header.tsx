@@ -1,10 +1,15 @@
 import { createSignal, onMount } from "solid-js";
 import MoreMenu from "@components/MoreMenu";
 import { IoSearchOutline } from "solid-icons/io";
+import classNames from "classnames";
 
 export const Menus = ["blog", "categories", "tags", "about"];
 
-const Header = () => {
+type Props = {
+  pathname: string;
+};
+
+const Header = ({ pathname }: Props) => {
   const [scrolled, setScrolled] = createSignal(false);
   let themeSwitch: HTMLLabelElement | undefined;
 
@@ -27,9 +32,9 @@ const Header = () => {
 
   return (
     <nav
-      class="z-50 sticky top-0 backdrop-blur-md"
+      class={classNames("z-50 sticky top-0", scrolled() && "backdrop-blur-sm")}
       style={{
-        background: "hsla(var(--b3), 0.5)",
+        background: "hsla(var(--b1) / .8)",
         ...(scrolled() && {
           "box-shadow": "var(--header-border-bottom)",
         }),
@@ -47,11 +52,23 @@ const Header = () => {
         <div class="flex-none">
           <ul class="menu menu-horizontal px-1">
             <div class="hidden menu sm:menu-horizontal">
-              {Menus.map((menu) => (
-                <li>
-                  <a href={`/${menu}`}>{menu.toLocaleUpperCase()}</a>
-                </li>
-              ))}
+              {Menus.map((menu) => {
+                const path = `/${menu}`;
+                const isActivePath = pathname.startsWith(path);
+
+                return (
+                  <li>
+                    <a
+                      href={path}
+                      class={classNames(
+                        isActivePath && "text-secondary font-bold"
+                      )}
+                    >
+                      {menu.toLocaleUpperCase()}
+                    </a>
+                  </li>
+                );
+              })}
             </div>
             <li id="docsearch-search-button">
               <button class="btn btn-ghost btn-xs h-full">

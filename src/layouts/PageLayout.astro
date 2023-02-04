@@ -21,6 +21,8 @@ const {
   article,
   image = "/og-image.png",
 } = Astro.props;
+
+const { pathname } = Astro.url;
 ---
 
 <html lang="ko">
@@ -79,7 +81,7 @@ const {
   </head>
 
   <body>
-    <Header client:visible />
+    <Header client:visible pathname={pathname} />
     <DocSearch client:only="react" />
     <div class="max-w-screen-sm sm:mx-auto mx-5">
       <article class="pt-10 pb-20">
