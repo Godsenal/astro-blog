@@ -4,21 +4,17 @@ import classNames from "classnames";
 import { createEffect, createSignal, onCleanup, Show } from "solid-js";
 
 const MoreMenu = () => {
-  const [ulRef, setRef] = createSignal<HTMLUListElement>();
+  let ul: HTMLUListElement | undefined;
   const [isOpen, setIsOpen] = createSignal(false);
 
   const handleToggle = () => setIsOpen((prev) => !prev);
 
   createEffect(() => {
-    const $ul = ulRef();
-    if (!$ul) {
-      return;
-    }
-    if (isOpen()) {
-      disableBodyScroll($ul);
+    if (isOpen() && ul) {
+      disableBodyScroll(ul);
 
       onCleanup(() => {
-        enableBodyScroll($ul);
+        ul && enableBodyScroll(ul);
       });
     }
   });
@@ -61,7 +57,7 @@ const MoreMenu = () => {
         </label>
         <Show when={isOpen()}>
           <ul
-            ref={setRef}
+            ref={ul}
             class="absolute top-10 right-0 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
             {Menus.map((menu) => (
