@@ -2,11 +2,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx,astro}"],
-  plugins: [
-    require("@tailwindcss/line-clamp"),
-    require("@tailwindcss/typography"),
-    require("daisyui"),
-  ],
+  plugins: [require("@tailwindcss/typography"), require("daisyui")],
   theme: {
     extend: {
       fontFamily: {
