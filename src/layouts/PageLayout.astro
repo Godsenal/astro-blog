@@ -9,6 +9,8 @@ type Props = {
   keywords?: string;
   description?: string;
   url?: string;
+  article?: boolean;
+  image?: string;
 };
 
 const SiteName = "Godsenal";
@@ -43,7 +45,7 @@ const { pathname } = Astro.url;
     <meta name="description" content={description} />
     {keywords && <meta name="keywords" content={keywords} />}
     {url && <meta property="og:url" content={url} />}
-    {(article ? true : null) && <meta property="og:type" content="article" />}
+    {article && <meta property="og:type" content="article" />}
     {title && <meta property="og:title" content={title} />}
     {description && <meta property="og:description" content={description} />}
     {image && <meta property="og:image" content={image} />}
