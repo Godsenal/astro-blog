@@ -6,6 +6,10 @@
   display: none;
 }
 
+.balance-text {
+  text-wrap: balance;
+}
+
 [data-theme="dark"] .dark-hidden {
   display: none;
 }
