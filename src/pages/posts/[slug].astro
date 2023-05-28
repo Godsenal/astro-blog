@@ -30,7 +30,7 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
 <script is:inline src="/balance-text.js"></script>
 <script is:inline>
-  window.balanceText();
+  // window.balanceText();
 </script>
 
 <PageLayout
@@ -45,7 +45,9 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
     </h1>
     <div class="flex justify-end font-bold">
       <div class="mt-5 flex flex-col gap-2 text-right">
-        <TagList tags={entry.data.tags || []} />
+        <div>
+          <TagList tags={entry.data.tags || []} />
+        </div>
         <div class="text-sm flex justify-end items-center gap-1">
           <span class="text-primary">{entry.data.date}</span>
           <span>·</span>

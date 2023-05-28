@@ -14,19 +14,22 @@ const postWithMatter = await getPostsWithMatters(posts);
   {
     postWithMatter.map((post) => (
       <div>
-        <div class="mb-2 flex items-center gap-2">
-          <span class="text-sm text-primary font-bold">{post.data.date}</span>
-
-          <span>|</span>
-          {post.data.tags && (
-            <div class="inline-block">
-              <TagList tags={post.data.tags || []} />
-            </div>
-          )}
-          <span>|</span>
-          <span class="text-sm text-secondary font-bold">
-            {Math.floor(post.frontMatter.minutesRead)}분
+        <div class="mb-2 flex gap-2 flex-wrap flex-col sm:flex-row sm:items-center">
+          <span class="text-sm text-primary font-bold shrink-0">
+            {post.data.date}
           </span>
+          <span class="hidden sm:block">|</span>
+          <div class="flex items-center gap-2 flex-wrap">
+            {post.data.tags && (
+              <div class="inline-block">
+                <TagList tags={post.data.tags || []} />
+              </div>
+            )}
+            <span>|</span>
+            <span class="text-sm text-secondary font-bold shrink-0">
+              {Math.floor(post.frontMatter.minutesRead)}분
+            </span>
+          </div>
         </div>
         <a href={`/posts/${post.slug}`}>
           <div class="card w-full bg-base-100">
