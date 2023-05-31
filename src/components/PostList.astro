@@ -21,11 +21,13 @@ const postWithMatter = await getPostsWithMatters(posts);
           <span class="hidden sm:block">|</span>
           <div class="flex items-center gap-2 flex-wrap">
             {post.data.tags && (
-              <div class="inline-block">
-                <TagList tags={post.data.tags || []} />
-              </div>
+              <>
+                <div class="inline-block">
+                  <TagList tags={post.data.tags || []} />
+                </div>
+                <span>|</span>
+              </>
             )}
-            <span>|</span>
             <span class="text-sm text-secondary font-bold shrink-0">
               {Math.floor(post.frontMatter.minutesRead)}분
             </span>
