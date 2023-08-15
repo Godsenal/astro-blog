@@ -242,6 +242,29 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astrojs/markdown-remark@npm:^2.2.1":
+  version: 2.2.1
+  resolution: "@astrojs/markdown-remark@npm:2.2.1"
+  dependencies:
+    "@astrojs/prism": ^2.1.2
+    github-slugger: ^1.4.0
+    import-meta-resolve: ^2.1.0
+    rehype-raw: ^6.1.1
+    rehype-stringify: ^9.0.3
+    remark-gfm: ^3.0.1
+    remark-parse: ^10.0.1
+    remark-rehype: ^10.1.0
+    remark-smartypants: ^2.0.0
+    shiki: ^0.14.1
+    unified: ^10.1.2
+    unist-util-visit: ^4.1.0
+    vfile: ^5.3.2
+  peerDependencies:
+    astro: ^2.5.0
+  checksum: 4ccbd4f3cbaf48281e696d364be7f713a661ea2a34eb69cf0eb1ac4099600411da7aa632d0ba08089f9408dff82c727a52a16e659237c1bd6ab3a9e6e4b2a057
+  languageName: node
+  linkType: hard
+
 "@astrojs/prefetch@npm:^0.2.1":
   version: 0.2.1
   resolution: "@astrojs/prefetch@npm:0.2.1"
@@ -257,6 +280,15 @@ __metadata:
   dependencies:
     prismjs: ^1.28.0
   checksum: 396314ba0bb816d32e3916146d7e7518641ad247adbc18af76676ed0cfd5833f017f1696a05bc12f113cf1b2bdd102b49f61e068ef5d20d81b746b4bbb687d80
+  languageName: node
+  linkType: hard
+
+"@astrojs/prism@npm:^2.1.2":
+  version: 2.1.2
+  resolution: "@astrojs/prism@npm:2.1.2"
+  dependencies:
+    prismjs: ^1.28.0
+  checksum: 79799428a2021e210a71161d161584314bcf469987ad87ebac2371cd67472ee516530f773fd5692a48041d29861584b49704936c2140e53d0c57b693b26c5ffa
   languageName: node
   linkType: hard
 
@@ -837,6 +869,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@example/framework-solid@workspace:."
   dependencies:
+    "@astrojs/markdown-remark": ^2.2.1
     "@astrojs/prefetch": ^0.2.1
     "@astrojs/react": ^2.1.3
     "@astrojs/sitemap": ^1.3.0
