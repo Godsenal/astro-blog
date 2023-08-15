@@ -14,8 +14,8 @@ const postWithMatter = await getPostsWithMatters(posts);
   {
     postWithMatter.map((post) => (
       <div>
-        <div class="mb-2 flex gap-2 flex-wrap flex-col sm:flex-row sm:items-center">
-          <span class="text-sm text-primary font-bold shrink-0">
+        <div class="mb-2 flex gap-2 flex-wrap flex-col text-opacity-50 sm:flex-row sm:items-center">
+          <span class="text text-primary font-bold shrink-0">
             {post.data.date}
           </span>
           <span class="hidden sm:block">|</span>
@@ -28,7 +28,7 @@ const postWithMatter = await getPostsWithMatters(posts);
                 <span>|</span>
               </>
             )}
-            <span class="text-sm text-secondary font-bold shrink-0">
+            <span class="font-bold shrink-0">
               {Math.floor(post.frontMatter.minutesRead)}분
             </span>
           </div>

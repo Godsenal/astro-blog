@@ -30,7 +30,7 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
 <script is:inline src="/balance-text.js"></script>
 <script is:inline>
-  window.balanceText();
+window.balanceText();
 </script>
 
 <PageLayout
@@ -48,10 +48,10 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
         <div>
           <TagList tags={entry.data.tags || []} />
         </div>
-        <div class="text-sm flex justify-end items-center gap-1">
-          <span class="text-primary">{entry.data.date}</span>
+        <div class="text-sm flex justify-end items-center gap-1 text-primary">
+          <span>{entry.data.date}</span>
           <span>·</span>
-          <span class="text-secondary">
+          <span>
             {Math.floor(remarkPluginFrontmatter.minutesRead)}분
           </span>
         </div>
@@ -61,7 +61,7 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
   <div class="relative mt-10">
     <Toc client:load headings={headings} />
     <div
-      class="prose prose-storn max-w-full prose-a:link-secondary prose-headings:relative prose-pre:m-0 break-words"
+      class="prose prose-stone prose-lg max-w-full prose-a:link-secondary prose-headings:relative prose-pre:m-0 break-words text-inherit"
     >
       <Content />
     </div>
@@ -137,19 +137,15 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
   .icon.icon-link {
     display: none;
-    position: absolute;
-    top: 50%;
-    left: 0;
-    bottom: 0;
-    height: 50%;
+  }
 
-    aspect-ratio: 1/1;
+  .icon.icon-link::before {
+    display: block;
+    content: "#";
 
-    background: url("/icons/link.svg");
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    transform: translate(-120%, -50%);
+    width: 1em;
+    margin-left: -1em;
+    font-size: 0.9em;
   }
 
   .remark-code-title {
