@@ -71,8 +71,10 @@ const Header = ({ pathname }: Props) => {
               })}
             </div>
             <li id="docsearch-search-button">
-              <button class="btn btn-ghost btn-xs h-full">
-                <IoSearchOutline size={18} />
+              <button class="btn btn-ghost btn-xs h-full flex">
+                <div class="h-full flex items-center">
+                  <IoSearchOutline size={18} />
+                </div>
               </button>
             </li>
             <li>
