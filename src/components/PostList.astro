@@ -44,9 +44,19 @@ const postWithMatter = await getPostsWithMatters(posts);
                 />
               </figure>
             )}
-            <div class="card-body p-0">
+            <div
+              class="card-body p-0"
+              transition:name={`post-title-${post.id}`}
+            >
               <h2 class="card-title">{post.data.title}</h2>
-              {post.frontMatter?.excerpt && <p>{post.frontMatter.excerpt}</p>}
+              {post.frontMatter?.excerpt && (
+                <p
+                  transition:name={`post-content-${post.id}`}
+                  transition:animate="fade"
+                >
+                  {post.frontMatter.excerpt}
+                </p>
+              )}
             </div>
           </div>
         </a>

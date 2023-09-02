@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import { Algolia } from "@constants/config";
 import "@/styles/base.css";
 import DocSearch from "@components/DocSearch";
+import { ViewTransitions } from "astro:transitions";
 
 type Props = {
   title?: string;
@@ -80,6 +81,7 @@ const { pathname } = Astro.url;
       href={`https://${Algolia.appId}-dsn.algolia.net`}
       crossorigin
     />
+    <ViewTransitions />
   </head>
 
   <body>
@@ -90,27 +92,29 @@ const { pathname } = Astro.url;
         <slot />
       </article>
     </div>
+    <script is:inline>
+      const theme = (() => {
+        if (
+          typeof localStorage !== "undefined" &&
+          localStorage.getItem("theme")
+        ) {
+          return localStorage.getItem("theme") || "dark";
+        }
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          return "dark";
+        }
+        return "light";
+      })();
+      const isDarkTheme = theme === "dark";
+
+      document.documentElement.setAttribute(
+        "data-theme",
+        isDarkTheme ? "dark" : "light"
+      );
+      isDarkTheme &&
+        document.querySelector(".theme-switch").classList.add("swap-active");
+
+      window.localStorage.setItem("theme", theme);
+    </script>
   </body>
 </html>
-
-<script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme") || "dark";
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
-  const isDarkTheme = theme === "dark";
-
-  document.documentElement.setAttribute(
-    "data-theme",
-    isDarkTheme ? "dark" : "light"
-  );
-  isDarkTheme &&
-    document.querySelector(".theme-switch").classList.add("swap-active");
-
-  window.localStorage.setItem("theme", theme);
-</script>
