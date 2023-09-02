@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import { Algolia } from "@constants/config";
 import "@/styles/base.css";
 import DocSearch from "@components/DocSearch";
-import { ViewTransitions } from "astro:transitions";
+// import { ViewTransitions } from "astro:transitions";
 
 type Props = {
   title?: string;
@@ -81,7 +81,7 @@ const { pathname } = Astro.url;
       href={`https://${Algolia.appId}-dsn.algolia.net`}
       crossorigin
     />
-    <ViewTransitions />
+    <!-- <ViewTransitions /> -->
   </head>
 
   <body>

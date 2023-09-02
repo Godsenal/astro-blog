@@ -120,9 +120,9 @@ const Header = ({ pathname }: Props) => {
                 </svg>
               </label>
             </li>
-            <div className="sm:hidden">
+            <li className="sm:hidden">
               <MoreMenu />
-            </div>
+            </li>
           </ul>
         </div>
       </div>

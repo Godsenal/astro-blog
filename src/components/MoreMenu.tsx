@@ -26,7 +26,7 @@ const MoreMenu = () => {
           className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75"
         />
       )}
-      <li className="relative z-50">
+      <div className="relative z-50 px-0">
         <label
           className={classNames(
             "btn btn-ghost h-full btn-xs swap swap-rotate",
@@ -68,7 +68,7 @@ const MoreMenu = () => {
             ))}
           </ul>
         )}
-      </li>
+      </div>
     </>
   );
 };
