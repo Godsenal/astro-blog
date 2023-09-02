@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import MoreMenu from "@components/MoreMenu";
 import classNames from "classnames";
-import { IoIosSearch } from "react-icons/io";
 
 export const Menus = ["blog", "categories", "tags", "about"];
 
@@ -60,7 +59,7 @@ const Header = ({ pathname }: Props) => {
                 const isActivePath = pathname.startsWith(path);
 
                 return (
-                  <li>
+                  <li key={menu}>
                     <a
                       href={path}
                       className={classNames(
@@ -76,7 +75,17 @@ const Header = ({ pathname }: Props) => {
             <li id="docsearch-search-button">
               <button className="btn btn-ghost btn-xs h-full flex">
                 <div className="h-full flex items-center">
-                  <IoIosSearch size={18} />
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    x="0px"
+                    y="0px"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 50 50"
+                    fill="currentColor"
+                  >
+                    <path d="M 21 3 C 11.654545 3 4 10.654545 4 20 C 4 29.345455 11.654545 37 21 37 C 24.701287 37 28.127393 35.786719 30.927734 33.755859 L 44.085938 46.914062 L 46.914062 44.085938 L 33.875 31.046875 C 36.43682 28.068316 38 24.210207 38 20 C 38 10.654545 30.345455 3 21 3 z M 21 5 C 29.254545 5 36 11.745455 36 20 C 36 28.254545 29.254545 35 21 35 C 12.745455 35 6 28.254545 6 20 C 6 11.745455 12.745455 5 21 5 z"></path>
+                  </svg>
                 </div>
               </button>
             </li>
