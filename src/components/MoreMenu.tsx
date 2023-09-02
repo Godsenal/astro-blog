@@ -1,42 +1,41 @@
 import { Menus } from "@components/Header";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import classNames from "classnames";
-import { createEffect, createSignal, onCleanup, Show } from "solid-js";
+import { useEffect, useRef, useState } from "react";
 
 const MoreMenu = () => {
-  let ul: HTMLUListElement | undefined;
-  const [isOpen, setIsOpen] = createSignal(false);
+  const ul = useRef<HTMLUListElement>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleToggle = () => setIsOpen((prev) => !prev);
 
-  createEffect(() => {
-    if (isOpen() && ul) {
-      disableBodyScroll(ul);
+  useEffect(() => {
+    const $ul = ul.current;
+    if (isOpen && $ul) {
+      disableBodyScroll($ul);
 
-      onCleanup(() => {
-        ul && enableBodyScroll(ul);
-      });
+      return () => enableBodyScroll($ul);
     }
-  });
+  }, [isOpen]);
 
   return (
     <>
-      <Show when={isOpen()}>
+      {isOpen && (
         <div
           onClick={handleToggle}
-          class="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75"
+          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75"
         />
-      </Show>
-      <li class="relative z-50">
+      )}
+      <li className="relative z-50">
         <label
-          class={classNames(
+          className={classNames(
             "btn btn-ghost h-full btn-xs swap swap-rotate",
-            isOpen() && "text-neutral-content"
+            isOpen && "text-neutral-content"
           )}
         >
-          <input type="checkbox" checked={isOpen()} onChange={handleToggle} />
+          <input type="checkbox" checked={isOpen} onChange={handleToggle} />
           <svg
-            class="swap-off fill-current"
+            className="swap-off fill-current"
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
@@ -46,7 +45,7 @@ const MoreMenu = () => {
           </svg>
 
           <svg
-            class="swap-on fill-current"
+            className="swap-on fill-current"
             xmlns="http://www.w3.org/2000/svg"
             width="18"
             height="18"
@@ -55,20 +54,20 @@ const MoreMenu = () => {
             <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
           </svg>
         </label>
-        <Show when={isOpen()}>
+        {isOpen && (
           <ul
             ref={ul}
-            class="absolute top-10 right-0 p-2 shadow-lg bg-base-100 rounded-box w-52"
+            className="absolute top-10 right-0 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
             {Menus.map((menu) => (
               <li>
-                <a class="w-full text-lg" href={`/${menu}`}>
+                <a className="w-full text-lg" href={`/${menu}`}>
                   {menu.toLocaleUpperCase()}
                 </a>
               </li>
             ))}
           </ul>
-        </Show>
+        )}
       </li>
     </>
   );

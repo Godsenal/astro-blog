@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import solid from "@astrojs/solid-js";
+// import solid from "@astrojs/solid-js";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 import prefetch from "@astrojs/prefetch";
@@ -34,7 +34,7 @@ export default defineConfig({
   site: "https://godsenal.com",
   integrations: [
     react(),
-    solid(),
+    // solid(),
     prefetch(),
     sitemap(),
     tailwind({

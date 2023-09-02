@@ -1,6 +1,6 @@
 import type { MarkdownHeading } from "astro";
 import classNames from "classnames";
-import { createSignal, onMount } from "solid-js";
+import { useEffect, useState } from "react";
 
 type Props = {
   headings: MarkdownHeading[];
@@ -9,9 +9,9 @@ type Props = {
 const GAP = 10;
 
 const Toc = ({ headings }: Props) => {
-  const [activeHeading, setActiveHeading] = createSignal<string>();
+  const [activeHeading, setActiveHeading] = useState<string>();
 
-  onMount(() => {
+  useEffect(() => {
     const $headings = [
       ...headings
         .map((heading) => document.querySelector(`#${heading.slug}`))
@@ -34,26 +34,26 @@ const Toc = ({ headings }: Props) => {
         setActiveHeading($headings.slice(-1)[0]?.id);
       }
     });
-  });
+  }, []);
 
   return (
-    <div class="absolute left-full h-full hidden xl:block">
-      <nav class="sticky top-20 left-0">
-        <ul class="m-0 ml-10 p-0 list-none w-60">
+    <div className="absolute left-full h-full hidden xl:block">
+      <nav className="sticky top-20 left-0">
+        <ul className="m-0 ml-10 p-0 list-none w-60">
           {headings.map((heading) => (
             <li
-              class={classNames(
+              className={classNames(
                 "p-0 mt-2 first:mt-0 ",
-                activeHeading() === heading.slug
+                activeHeading === heading.slug
                   ? ["text-primary", "font-bold"]
                   : ["text-gray-500"]
               )}
               style={{
-                "padding-left": `${(heading.depth - 1) * 1}rem`,
+                paddingLeft: `${(heading.depth - 1) * 1}rem`,
               }}
             >
               <a
-                class="p-0"
+                className="p-0"
                 href={`#${heading.slug}`}
                 onClick={() => window.scrollBy({ top: -200 })}
               >
