@@ -38,10 +38,11 @@ const Toc = ({ headings }: Props) => {
 
   return (
     <div className="absolute left-full h-full hidden xl:block">
-      <nav className="sticky top-20 left-0">
+      <nav className="sticky top-24 left-0">
         <ul className="m-0 ml-10 p-0 list-none w-60">
           {headings.map((heading) => (
             <li
+              key={heading.slug}
               className={classNames(
                 "p-0 mt-2 first:mt-0 ",
                 activeHeading === heading.slug
