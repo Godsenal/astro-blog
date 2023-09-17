@@ -44,10 +44,7 @@ const Header = ({ pathname }: Props) => {
     >
       <div className="navbar px-5  sm:px-0 max-w-screen-sm mx-auto">
         <div className="flex-1 ">
-          <a
-            href="/"
-            className="btn btn-ghost normal-case text-2xl px-0 animate-none"
-          >
+          <a href="/" className="normal-case text-2xl font-bold">
             GODSENAL
           </a>
         </div>
