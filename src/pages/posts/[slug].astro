@@ -30,7 +30,7 @@ const { Content, headings, remarkPluginFrontmatter } = await entry.render();
 
 <script is:inline src="/balance-text.js"></script>
 <script is:inline>
-window.balanceText();
+  window.balanceText();
 </script>
 
 <PageLayout
@@ -107,8 +107,8 @@ window.balanceText();
 <style is:global>
   :not(pre) > code {
     border-radius: 0.35rem !important;
-    background: hsl(var(--b3)) !important;
-    color: hsl(var(--bc)) !important;
+    background: oklch(var(--b3)) !important;
+    color: oklch(var(--bc)) !important;
   }
 
   /* 
@@ -153,8 +153,8 @@ window.balanceText();
   }
 
   .remark-code-title {
-    background: hsl(var(--b3));
-    color: hsl(var(--bc));
+    background: oklch(var(--b3));
+    color: oklch(var(--bc));
     padding: 0.5rem 1rem;
     border-radius: 0.5rem 0.5rem 0 0;
     font-weight: bold;

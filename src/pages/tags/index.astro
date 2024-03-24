@@ -13,7 +13,10 @@ const tags = getAllTagsWithCount(await getCollection("post"));
     <div class="mt-5 inline-flex gap-3 flex-wrap">
       {
         tags.map(([tag, count], i) => (
-          <a class="mx-0 border rounded-md font-bold p-2" href={`/tags/${tag}`}>
+          <a
+            class="mx-0 bg-secondary text-secondary-content rounded-full font-bold px-2 py-1"
+            href={`/tags/${tag}`}
+          >
             {tag} ({count})
           </a>
         ))
