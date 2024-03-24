@@ -36,7 +36,7 @@ const Header = ({ pathname }: Props) => {
         scrolled && "backdrop-blur-sm"
       )}
       style={{
-        background: "hsla(var(--b1) / .8)",
+        background: "oklch(var(--b1) / .8)",
         ...(scrolled && {
           "box-shadow": "var(--header-border-bottom)",
         }),

@@ -14,7 +14,7 @@ module.exports = {
     themes: [
       {
         light: {
-          ...require("daisyui/src/theming/themes")["[data-theme=light]"],
+          ...require("daisyui/src/theming/themes")["light"],
           primary: "#4c863c",
           secondary: "#4c863c",
           "base-content": "#24292e",
@@ -35,7 +35,7 @@ module.exports = {
           error: "#F87272",
           "base-content": "#d5dce4",
           "primary-content": "#222831",
-          "--header-border-bottom": "inset 0 -1px 0 0 hsla(0,0%,100%,.1)",
+          "--header-border-bottom": "inset 0 -1px 0 0 oklch(0,0%,100%,.1)",
         },
       },
     ],
