@@ -23,7 +23,7 @@ const MoreMenu = () => {
       {isOpen && (
         <div
           onClick={handleToggle}
-          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75"
+          className="fixed top-0 left-0 right-0 bottom-0 w-screen h-screen z-10 backdrop-blur-sm bg-black bg-opacity-75 rounded-none"
         />
       )}
       <div className="relative z-50 px-0">
@@ -55,18 +55,18 @@ const MoreMenu = () => {
           </svg>
         </label>
         {isOpen && (
-          <ul
+          <ol
             ref={ul}
             className="absolute top-10 right-0 p-2 shadow-lg bg-base-100 rounded-box w-52"
           >
             {Menus.map((menu) => (
-              <li>
+              <li key={menu}>
                 <a className="w-full text-lg" href={`/${menu}`}>
                   {menu.toLocaleUpperCase()}
                 </a>
               </li>
             ))}
-          </ul>
+          </ol>
         )}
       </div>
     </>
