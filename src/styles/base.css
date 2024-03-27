@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+Disqus 에서 body background color를 읽는 곳에 oklch 대응이 안되어있으므로 fallback 컬러 사용
+*/
+:root[data-theme="light"] {
+  background-color: #ffffff;
+  color: #1f2937;
+}
+
+:root[data-theme="dark"] {
+  background-color: #1d232a;
+  color: #a6adbb;
+}
+
 .hidden {
   display: none;
 }

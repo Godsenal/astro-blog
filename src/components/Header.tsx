@@ -36,9 +36,8 @@ const Header = ({ pathname }: Props) => {
         scrolled && "backdrop-blur-sm"
       )}
       style={{
-        background: "oklch(var(--b1) / .8)",
         ...(scrolled && {
-          "box-shadow": "var(--header-border-bottom)",
+          boxShadow: "var(--header-border-bottom)",
         }),
       }}
     >
